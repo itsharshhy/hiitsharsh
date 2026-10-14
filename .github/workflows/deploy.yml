@@ -28,8 +28,13 @@ jobs:
         env:
           # the site lives at https://itsharshhy.github.io/portfolio-/
           BASE_PATH: /portfolio-/
-      # GitHub Pages has no rewrites, so serve the app for unknown paths too (deep links like /about).
-      - run: cp dist/index.html dist/404.html
+      # GitHub Pages has no rewrites: give every page its own index.html so deep links
+      # (like /about) load with a normal 200, and keep 404.html as a fallback for anything else.
+      - run: |
+          cp dist/index.html dist/404.html
+          for r in about contact work work/plant-a-thought work/pebble work/seven-wonders-studio; do
+            mkdir -p "dist/$r" && cp dist/index.html "dist/$r/index.html"
+          done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
