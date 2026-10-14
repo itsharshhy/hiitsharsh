@@ -1,24 +1,32 @@
 :root {
-  --night: #151413;
-  --night-2: #1d1b19;
-  --cream: #fbf7ef;
-  --paper: #f4eee2;
-  --ink: #1b1a19;
-  --muted: #8f877c;
-  --cherry: #e0475b;
-  --mustard: #f2c23d;
-  /* collage palette (About, Projects) */
-  --pink: #f592c8;
-  --pen: #3b57cf;
-  --red: #d63b2c;
-  --lemon: #f3e44f;
-  --sky: #7fa3ea;
-  --lilac: #c9a6e8;
-  --cream-2: #faf8f3;
-  --cobalt: #2a4bd7;
-  --navy: #13318c;
-  --tomato: #e8472e;
-  --kraft: #c9a46a;
+  /* palette: East Bay + Rum Swizzle, plus tints of the two */
+  --eastbay: #474c80;
+  --eastbay-deep: #353966;
+  --eastbay-soft: #8a8fc2;
+  --eastbay-mist: #c9cbec;
+  --rum: #f8f7e2;
+  --rum-deep: #e9e6c4;
+
+  --night: var(--eastbay);
+  --night-2: var(--eastbay-deep);
+  --cream: var(--rum);
+  --paper: var(--rum);
+  --ink: #2b2f55;
+  --muted: #b9bce0;
+  --cherry: var(--eastbay-soft);
+  --mustard: var(--rum-deep);
+  /* collage names, mapped onto the palette */
+  --pink: #d6d8f2;
+  --pen: var(--eastbay);
+  --red: var(--eastbay-soft);
+  --lemon: var(--rum-deep);
+  --sky: var(--eastbay-mist);
+  --lilac: var(--eastbay-mist);
+  --cream-2: var(--rum);
+  --cobalt: var(--eastbay-deep);
+  --navy: var(--eastbay);
+  --tomato: var(--eastbay-soft);
+  --kraft: var(--rum-deep);
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'Instrument Sans Variable', system-ui, sans-serif;
   --hand: 'Patrick Hand', 'Comic Sans MS', cursive;
@@ -185,17 +193,17 @@ h3 {
   rotate: -4deg;
   opacity: 0.85;
   z-index: 2;
-  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.25) 0 6px, transparent 6px 12px), var(--tape, #e3cfa3);
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.25) 0 6px, transparent 6px 12px), var(--tape, #e9e6c4);
   clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
 }
 .tape--kraft {
-  --tape: #f5b8d0;
+  --tape: #e9e6c4;
 }
 .tape--blue {
-  --tape: #9db3f0;
+  --tape: #c9cbec;
 }
 .tape--yellow {
-  --tape: #f3dc8a;
+  --tape: #dcdcf0;
 }
 
 .polaroid {
@@ -373,13 +381,13 @@ h3 {
 
 .sticky-note {
   aspect-ratio: 1;
-  background: linear-gradient(160deg, #e2c46a, #c9a74c);
+  background: linear-gradient(160deg, #f8f7e2, #e9e6c4);
   padding: 14% 12%;
   display: flex;
   flex-direction: column;
   gap: 2px;
   font: clamp(0.8rem, 1.1vw, 1.1rem) / 1.3 var(--hand);
-  color: #3b2f17;
+  color: #474c80;
   clip-path: polygon(0 0, 100% 0, 100% 88%, 90% 100%, 0 100%);
 }
 @media (max-width: 720px) {
@@ -606,9 +614,9 @@ h3 {
 /* ---------- footer ---------- */
 
 .footer {
-  border-top: 1px dashed #3a3632;
+  border-top: 1px dashed rgba(248, 247, 226, 0.25);
   padding: 50px var(--gutter) 30px;
-  background: var(--night);
+  background: var(--eastbay-deep);
   color: var(--cream);
 }
 .footer__big {
@@ -654,7 +662,7 @@ h3 {
   letter-spacing: 0.12em;
 }
 .dymo > li {
-  background: #1b1a19;
+  background: var(--eastbay);
   color: #f4f1ea;
   padding: 6px 14px;
   border-radius: 3px;
@@ -662,10 +670,10 @@ h3 {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 .dymo > li:nth-child(3n + 2) {
-  background: var(--cherry);
+  background: #6b70a8;
 }
 .dymo > li:nth-child(3n) {
-  background: #2f5fd0;
+  background: var(--eastbay-deep);
 }
 /* ---------- case study ---------- */
 
@@ -827,17 +835,17 @@ h3 {
   background: none;
 }
 .dymo--notes strong {
-  background: #1b1a19;
+  background: var(--eastbay);
   color: #f4f1ea;
   padding: 5px 12px;
   border-radius: 3px;
   font-weight: 500;
 }
 .dymo--notes > li:nth-child(3n + 2) strong {
-  background: var(--cherry);
+  background: #6b70a8;
 }
 .dymo--notes > li:nth-child(3n) strong {
-  background: #2f5fd0;
+  background: var(--eastbay-deep);
 }
 .dymo--notes span {
   font: 1.15rem var(--hand);
@@ -1021,7 +1029,7 @@ h3 {
 /* ---------- contact ---------- */
 
 .contact {
-  background: #ead9c2;
+  background: var(--rum);
   color: var(--ink);
   padding: 100px var(--gutter) 100px;
   min-height: 100svh;
@@ -1034,7 +1042,7 @@ h3 {
   font-size: clamp(3.4rem, 9vw, 7rem);
 }
 .contact__head .scribble {
-  color: #9b5a3c;
+  color: var(--eastbay-soft);
   font-size: 1.4rem;
 }
 .contact__grid {
@@ -1059,7 +1067,7 @@ h3 {
 .mail__back {
   position: absolute;
   inset: 120px 0 0 0;
-  background: #f2b8c8;
+  background: #8a8fc2;
   border-radius: 6px;
 }
 .mail__flap {
@@ -1068,7 +1076,7 @@ h3 {
   left: 0;
   right: 0;
   height: 160px;
-  background: #e8a2b7;
+  background: #6b70a8;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top;
   z-index: 1;
@@ -1079,7 +1087,7 @@ h3 {
   right: 0;
   bottom: 0;
   height: 140px;
-  background: linear-gradient(160deg, #f6c9d6, #efb2c4);
+  background: linear-gradient(160deg, #a3a7d6, #8a8fc2);
   clip-path: polygon(0 0, 50% 45%, 100% 0, 100% 100%, 0 100%);
   border-radius: 0 0 6px 6px;
   z-index: 3;
@@ -1154,7 +1162,7 @@ h3 {
   text-decoration: none;
   border-radius: 4px;
   box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.35);
-  outline: 2px dashed #e0c9a8;
+  outline: 2px dashed var(--eastbay-mist);
   outline-offset: -8px;
   transition: background 0.2s;
 }
@@ -1163,7 +1171,7 @@ h3 {
 }
 .stamp__label {
   font: 1.25rem var(--hand);
-  color: #9b5a3c;
+  color: var(--eastbay);
 }
 .stamp__value {
   font: 0.9rem var(--mono);

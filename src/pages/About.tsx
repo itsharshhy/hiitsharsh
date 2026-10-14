@@ -14,11 +14,11 @@ const toolbox = ['TypeScript', 'JavaScript', 'React', 'HTML & CSS', 'Canvas', 'R
 
 // The portrait cut into strips and re-glued slightly off, with torn coloured paper between.
 const strips = [
-  { top: 0, h: 24, x: -8, rot: -1.5, paper: 'var(--red)' },
-  { top: 24, h: 16, x: 12, rot: 1, paper: 'var(--lemon)' },
-  { top: 40, h: 20, x: -4, rot: -0.8, paper: 'var(--navy)' },
-  { top: 60, h: 18, x: 10, rot: 1.4, paper: 'var(--pink)' },
-  { top: 78, h: 22, x: -6, rot: -1, paper: 'var(--sky)' },
+  { top: 0, h: 24, x: -8, rot: -1.5, paper: 'var(--eastbay-soft)' },
+  { top: 24, h: 16, x: 12, rot: 1, paper: 'var(--rum-deep)' },
+  { top: 40, h: 20, x: -4, rot: -0.8, paper: 'var(--eastbay)' },
+  { top: 60, h: 18, x: 10, rot: 1.4, paper: 'var(--eastbay-mist)' },
+  { top: 78, h: 22, x: -6, rot: -1, paper: 'var(--eastbay-deep)' },
 ];
 
 export default function About() {
@@ -27,7 +27,7 @@ export default function About() {
   return (
     <Page title={`About · ${site.firstName}'s Archive`} className="about">
       {/* ---------- hero: pink paper ---------- */}
-      <section className="ab-hero">
+      <section className="ab-hero on-dark">
         <div className="ab-hero__stage">
           <Kinetic as="h1" text={`HI, I'M ${site.firstName.toUpperCase()}.`} className="ab-hero__line ab-hero__line--1" />
           <Kinetic text="I MAKE CALM THINGS." className="ab-hero__line ab-hero__line--2" delay={0.4} />
@@ -53,7 +53,7 @@ export default function About() {
           <span className="ab-hero__scrawl" aria-hidden="true">
             this morning was a<br />
             good debugging day
-            <Arrow className="ab-hero__scrawl-arrow" color="var(--ink)" />
+            <Arrow className="ab-hero__scrawl-arrow" color="var(--rum)" />
           </span>
         </div>
 
@@ -135,8 +135,8 @@ export default function About() {
       </section>
 
       {/* ---------- currently + likes: pink paper ---------- */}
-      <section className="ab-now">
-        <Torn color="var(--pink)" under="var(--red)" seed={21} className="torn--top" />
+      <section className="ab-now on-dark">
+        <Torn color="var(--eastbay)" under="var(--eastbay-soft)" seed={21} className="torn--top" />
         <div className="ab-now__inner">
           <Kinetic as="h2" text="CURRENTLY" className="ab-big" />
           <div className="cards">

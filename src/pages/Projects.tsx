@@ -18,7 +18,7 @@ export default function Projects() {
   return (
     <Page title={`Projects · ${site.firstName}'s Archive`} className="projects">
       {/* ---------- hero: pink paper ---------- */}
-      <section className="pj-hero">
+      <section className="pj-hero on-dark">
         <div className="pj-hero__stage">
           <Kinetic as="h1" text="THINGS I'VE" className="pj-hero__line" />
           <Kinetic text="MADE (SO FAR)." className="pj-hero__line pj-hero__line--2" delay={0.35} />
@@ -80,8 +80,8 @@ export default function Projects() {
 
       {/* ---------- one section per project ---------- */}
       {projects.map((p, i) => (
-        <section key={p.slug} id={p.slug} className={`pj ${i % 2 ? 'pj--flip pj--pink' : ''}`}>
-          <Torn color={i % 2 ? 'var(--pink)' : 'var(--cream-2)'} under={['var(--cobalt)', 'var(--red)', 'var(--cobalt)'][i]} seed={11 + i * 9} className="torn--top" />
+        <section key={p.slug} id={p.slug} className={`pj ${i % 2 ? 'pj--flip pj--pink on-dark' : ''}`}>
+          <Torn color={i % 2 ? 'var(--eastbay)' : 'var(--cream-2)'} under={['var(--eastbay-deep)', 'var(--eastbay-soft)', 'var(--eastbay-deep)'][i]} seed={11 + i * 9} className="torn--top" />
           <div className="pj__inner">
             <div className="pj__text">
               <p className="pj__num">0{i + 1}</p>

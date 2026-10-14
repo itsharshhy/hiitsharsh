@@ -1,8 +1,8 @@
 /* Projects: pink cover, then torn cream / pink sheets, one per project. */
 
 .projects {
-  background: var(--pink);
-  color: var(--navy);
+  background: var(--eastbay);
+  color: var(--rum);
   font-family: var(--display);
   overflow: hidden;
 }
@@ -29,7 +29,7 @@
   line-height: 1.02;
   white-space: nowrap;
   letter-spacing: 0.02em;
-  color: var(--navy);
+  color: var(--rum);
 }
 .pj-hero__line--2 {
   padding-left: 8%;
@@ -126,10 +126,19 @@
 .pj {
   position: relative;
   background: var(--cream-2);
+  color: var(--eastbay);
   padding: 100px var(--gutter) 140px;
 }
 .pj--pink {
-  background: var(--pink);
+  background: var(--eastbay);
+  color: var(--rum);
+}
+.pj--pink .pj__title,
+.pj--pink .pj__meta {
+  color: var(--rum);
+}
+.pj--pink .pj__num {
+  -webkit-text-stroke-color: var(--rum);
 }
 .pj__inner {
   max-width: 1200px;
@@ -181,9 +190,7 @@
   gap: 14px;
   flex-wrap: wrap;
 }
-.pj--pink .pill:not(.pill--ghost) {
-  color: var(--cream-2);
-}
+
 
 .pj__collage {
   position: relative;
@@ -196,7 +203,7 @@
 }
 .pj__scrap--0 { background: var(--cobalt); }
 .pj__scrap--1 { background: var(--red); }
-.pj__scrap--2 { background: var(--lemon); }
+.pj__scrap--2 { background: var(--eastbay-mist); }
 .pj__shot {
   position: relative;
   margin: 0;
@@ -264,6 +271,7 @@
 .pj-end {
   position: relative;
   background: var(--cream-2);
+  color: var(--eastbay);
   text-align: center;
   padding: 100px var(--gutter) 120px;
 }
@@ -276,4 +284,11 @@
 .pj-end__sub {
   font: 1.4rem var(--hand);
   margin: 10px 0 30px;
+}
+
+.on-dark .bubble p {
+  color: var(--rum);
+}
+.on-dark .ink-flower {
+  color: var(--rum);
 }

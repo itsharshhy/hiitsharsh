@@ -164,7 +164,7 @@ export function InkFlower({ className = '', style }: { className?: string; style
         <motion.path
           key={i}
           d={d}
-          stroke="#141414"
+          stroke="currentColor"
           strokeWidth={i < 3 ? 2.6 : 3.4}
           fill="none"
           strokeLinecap="round"
