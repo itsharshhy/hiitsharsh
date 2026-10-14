@@ -53,7 +53,7 @@ export default function Avatar({ size = 'big', className = '' }: { size?: 'big' 
         </clipPath>
       </defs>
       <g className="avatar__bob">
-        <image href={asset('harsh.webp')} width="609" height="696" style={{ imageRendering: 'pixelated' }} />
+        <image href={asset('harsh.webp')} width="609" height="696" />
         {blink &&
           lenses.map((l) => (
             <g key={l.x}>

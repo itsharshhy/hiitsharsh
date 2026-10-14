@@ -7,15 +7,23 @@
   --muted: #8f877c;
   --cherry: #e0475b;
   --mustard: #f2c23d;
+  /* collage palette (About, Projects) */
+  --pink: #f592c8;
+  --pen: #3b57cf;
+  --red: #d63b2c;
+  --lemon: #f3e44f;
+  --sky: #7fa3ea;
+  --lilac: #c9a6e8;
+  --cream-2: #faf8f3;
   --cobalt: #2a4bd7;
-  --navy: #14245e;
+  --navy: #13318c;
   --tomato: #e8472e;
   --kraft: #c9a46a;
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'Instrument Sans Variable', system-ui, sans-serif;
   --hand: 'Patrick Hand', 'Comic Sans MS', cursive;
   --mono: 'DM Mono', ui-monospace, monospace;
-  --display: 'Bricolage Grotesque Variable', 'Instrument Sans Variable', sans-serif;
+  --display: 'Kumbh Sans Variable', 'Instrument Sans Variable', sans-serif;
   --gutter: clamp(16px, 4vw, 48px);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -80,7 +88,7 @@ h3 {
 }
 
 ::selection {
-  background: var(--mustard);
+  background: var(--pink);
   color: var(--ink);
 }
 
@@ -100,7 +108,7 @@ h3 {
 .scribble {
   font-family: var(--hand);
   font-size: 1.25rem;
-  color: var(--mustard);
+  color: var(--pink);
   margin: 0;
 }
 
@@ -181,7 +189,7 @@ h3 {
   clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
 }
 .tape--kraft {
-  --tape: #e3cfa3;
+  --tape: #f5b8d0;
 }
 .tape--blue {
   --tape: #9db3f0;
@@ -436,7 +444,7 @@ h3 {
 }
 .intro__kicker {
   font: 1.4rem var(--hand);
-  color: var(--mustard);
+  color: var(--pink);
   margin: 0 0 12px;
 }
 .intro__line {
@@ -446,7 +454,7 @@ h3 {
   margin: 0;
 }
 .intro__line em {
-  color: var(--mustard);
+  color: var(--pink);
 }
 
 .work-list {
@@ -626,7 +634,7 @@ h3 {
   text-decoration: none;
 }
 .footer__links a:hover {
-  color: var(--mustard);
+  color: var(--pink);
 }
 
 /* ---------- label-maker tape ---------- */
@@ -999,7 +1007,7 @@ h3 {
 .next__label {
   display: block;
   font: 1.2rem var(--hand);
-  color: var(--mustard);
+  color: var(--pink);
 }
 .next__title {
   display: block;
@@ -1051,7 +1059,7 @@ h3 {
 .mail__back {
   position: absolute;
   inset: 120px 0 0 0;
-  background: #b98d52;
+  background: #f2b8c8;
   border-radius: 6px;
 }
 .mail__flap {
@@ -1060,7 +1068,7 @@ h3 {
   left: 0;
   right: 0;
   height: 160px;
-  background: #c99e62;
+  background: #e8a2b7;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top;
   z-index: 1;
@@ -1071,8 +1079,7 @@ h3 {
   right: 0;
   bottom: 0;
   height: 140px;
-  background: repeating-linear-gradient(135deg, #e8472e 0 14px, #fdfaf2 14px 22px, #2a4bd7 22px 36px, #fdfaf2 36px 44px) top / 100% 10px no-repeat,
-    linear-gradient(160deg, #dcb87e, #cfa86c);
+  background: linear-gradient(160deg, #f6c9d6, #efb2c4);
   clip-path: polygon(0 0, 50% 45%, 100% 0, 100% 100%, 0 100%);
   border-radius: 0 0 6px 6px;
   z-index: 3;

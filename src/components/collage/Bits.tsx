@@ -12,24 +12,30 @@ const rand = (seed: number) => {
   };
 };
 
-/** A torn paper edge. Put it at the top of a section; `color` is that section's paper. */
-export function Torn({ color, seed = 3, height = 34, className = '' }: { color: string; seed?: number; height?: number; className?: string }) {
-  const d = useMemo(() => {
-    const r = rand(seed);
-    let p = `M0 ${height}`;
-    for (let x = 0; x <= 100; x += 1.6 + r() * 2.4) p += ` L${x.toFixed(2)} ${(height * 0.25 + r() * height * 0.6).toFixed(2)}`;
-    return `${p} L100 ${height * 0.5} L100 ${height} Z`;
+/** A torn paper edge. Put it at the top of a section; `color` is that section's paper.
+ *  `under` adds a second torn strip (e.g. blue paper) peeking out beneath the tear. */
+export function Torn({ color, under, seed = 3, height = 40, className = '' }: { color: string; under?: string; seed?: number; height?: number; className?: string }) {
+  const [d, d2] = useMemo(() => {
+    const edge = (sd: number, lo: number, hi: number) => {
+      const r = rand(sd);
+      let p = `M0 ${height}`;
+      for (let x = 0; x <= 100; x += 0.8 + r() * 1.8) p += ` L${x.toFixed(2)} ${(height * lo + r() * height * (hi - lo)).toFixed(2)}`;
+      return `${p} L100 ${height * 0.5} L100 ${height} Z`;
+    };
+    return [edge(seed, 0.45, 0.85), edge(seed + 5, 0.15, 0.6)];
   }, [seed, height]);
   return (
     <svg className={`torn ${className}`} viewBox={`0 0 100 ${height}`} preserveAspectRatio="none" aria-hidden="true" style={{ height }}>
-      <path d={d} fill="rgba(0,0,0,.12)" transform="translate(0 -2)" />
+      {under && <path d={d2} fill={under} />}
+      <path d={d} fill="rgba(0,0,0,.10)" transform="translate(0 -1.5)" />
+      <path d={d} fill="#fffdf8" transform="translate(0 -0.8)" />
       <path d={d} fill={color} />
     </svg>
   );
 }
 
 /** A hand-drawn loop that draws itself around whatever it wraps. */
-export function Scribble({ children, color = 'var(--tomato)', className = '' }: { children: ReactNode; color?: string; className?: string }) {
+export function Scribble({ children, color = 'var(--pen)', className = '' }: { children: ReactNode; color?: string; className?: string }) {
   return (
     <span className={`scribble-wrap ${className}`}>
       {children}
@@ -74,7 +80,7 @@ export function Arrow({ className = '', color = 'currentColor', style }: { class
 export function Note({ children, tilt = -3, tone = 'paper', className = '', style, delay = 0 }: {
   children: ReactNode;
   tilt?: number;
-  tone?: 'paper' | 'yellow' | 'blue' | 'kraft';
+  tone?: 'paper' | 'lemon' | 'lilac' | 'pink';
   className?: string;
   style?: CSSProperties;
   delay?: number;
@@ -94,13 +100,28 @@ export function Note({ children, tilt = -3, tone = 'paper', className = '', styl
   );
 }
 
-/** Big headline where every letter drops in on its own and jiggles on hover. */
-export function Kinetic({ text, className = '', delay = 0, as: Tag = 'span' }: { text: string; className?: string; delay?: number; as?: 'span' | 'h1' | 'h2' }) {
+/** Big headline where every letter drops in on its own, sits a little out of line
+ *  (like letters cut from a magazine) and jiggles on hover. Words never break apart. */
+export function Kinetic({ text, className = '', delay = 0, as: Tag = 'span', loose = true }: {
+  text: string;
+  className?: string;
+  delay?: number;
+  as?: 'span' | 'h1' | 'h2';
+  loose?: boolean;
+}) {
   const words = useMemo(() => {
     const r = rand(text.length * 7 + 1);
     let n = 0;
-    return text.split(' ').map((w) => w.split('').map((c) => ({ c, i: n++, rot: (r() - 0.5) * 50, tilt: (r() - 0.5) * 6 })));
-  }, [text]);
+    return text.split(' ').map((w) =>
+      w.split('').map((c) => ({
+        c,
+        i: n++,
+        rot: (r() - 0.5) * 50,
+        tilt: loose ? (r() - 0.5) * 4 : 0,
+        dy: loose ? (r() - 0.5) * 0.05 : 0,
+      })),
+    );
+  }, [text, loose]);
   return (
     <Tag className={`kinetic ${className}`}>
       <span className="sr-only">{text}</span>
@@ -111,9 +132,9 @@ export function Kinetic({ text, className = '', delay = 0, as: Tag = 'span' }: {
               key={l.i}
               className="kinetic__l"
               initial={{ y: '-0.8em', opacity: 0, rotate: l.rot }}
-              whileInView={{ y: 0, opacity: 1, rotate: l.tilt }}
+              whileInView={{ y: `${l.dy}em`, opacity: 1, rotate: l.tilt }}
               viewport={{ once: true }}
-              transition={{ type: 'spring', stiffness: 300, damping: 14, delay: delay + l.i * 0.035 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 14, delay: delay + l.i * 0.03 }}
               whileHover={{ y: '-0.08em', rotate: l.rot / 3 }}
             >
               {l.c}
@@ -122,6 +143,38 @@ export function Kinetic({ text, className = '', delay = 0, as: Tag = 'span' }: {
         </span>
       ))}
     </Tag>
+  );
+}
+
+/** A loose black-ink flower that draws itself, stroke by stroke. */
+export function InkFlower({ className = '', style }: { className?: string; style?: CSSProperties }) {
+  const strokes = [
+    'M100 270 C 98 220, 104 180, 100 120',
+    'M100 205 C 70 190, 46 196, 22 226 C 50 222, 78 214, 100 205',
+    'M101 180 C 130 160, 160 166, 182 146 C 156 144, 126 156, 101 180',
+    'M100 120 C 70 112, 52 84, 60 46 C 78 62, 92 86, 100 120',
+    'M100 120 C 128 110, 146 82, 140 44 C 122 60, 108 86, 100 120',
+    'M100 118 C 92 80, 94 48, 102 22 C 112 48, 110 82, 100 118',
+    'M62 50 C 70 64, 72 80, 86 96 M138 48 C 128 66, 126 82, 114 98',
+    'M96 30 C 98 60, 100 90, 99 116',
+  ];
+  return (
+    <svg className={`ink-flower ${className}`} style={style} viewBox="0 0 200 280" aria-hidden="true">
+      {strokes.map((d, i) => (
+        <motion.path
+          key={i}
+          d={d}
+          stroke="#141414"
+          strokeWidth={i < 3 ? 2.6 : 3.4}
+          fill="none"
+          strokeLinecap="round"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 + i * 0.18, ease: 'easeInOut' }}
+        />
+      ))}
+    </svg>
   );
 }
 

@@ -11,7 +11,7 @@ const links = [
 export default function Nav() {
   const { pathname, hash } = useLocation();
   const [open, setOpen] = useState(false);
-  const light = pathname.startsWith('/work/') || pathname === '/about' || pathname === '/contact';
+  const light = pathname.startsWith('/work') || pathname === '/about' || pathname === '/contact';
 
   useEffect(() => setOpen(false), [pathname, hash]);
 

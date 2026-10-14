@@ -59,26 +59,18 @@ export function StickyNote() {
 export function Envelope() {
   return (
     <svg viewBox="0 0 240 200" aria-hidden="true">
-      <defs>
-        <pattern id="airmail" width="24" height="8" patternUnits="userSpaceOnUse">
-          <rect width="8" height="8" fill="#e8472e" />
-          <rect x="12" width="8" height="8" fill="#2a4bd7" />
-        </pattern>
-      </defs>
-      <path d="M20 80 L120 20 L220 80Z" fill="#b98d52" />
+      <path d="M20 80 L120 20 L220 80Z" fill="#e597ad" />
       <g transform="rotate(-4 120 100)">
         <rect x="58" y="0" width="140" height="130" rx="3" fill="#f7f4ee" />
         <rect x="58" y="0" width="140" height="130" rx="3" fill="none" stroke="#e3ddd1" />
         <text x="128" y="34" textAnchor="middle" fontFamily={hand} fontSize="24" fill="#3a3530">say hi!</text>
         <text x="128" y="58" textAnchor="middle" fontFamily={hand} fontSize="15" fill="#8a8178">(open me)</text>
       </g>
-      <path d="M20 80 L220 80 L220 190 L20 190Z" fill="#c99e62" />
-      <path d="M20 80 L120 150 L220 80 L220 190 L20 190Z" fill="#dcb87e" />
-      <path d="M20 182 L220 182" stroke="url(#airmail)" strokeWidth="8" />
-      <text x="34" y="172" fontFamily={mono} fontSize="9" fill="#5a3f1c">PAR AVION · BY AIR MAIL</text>
-      <path d="M20 190 L105 128 M220 190 L135 128" stroke="#b98d52" strokeWidth="2" />
-      <circle cx="120" cy="140" r="12" fill="#c4303f" />
-      <text x="120" y="145" textAnchor="middle" fontFamily={serif} fontSize="14" fill="#f3d9b0">H</text>
+      <path d="M20 80 L220 80 L220 190 L20 190Z" fill="#f2b8c8" />
+      <path d="M20 80 L120 150 L220 80 L220 190 L20 190Z" fill="#f6c9d6" />
+      <path d="M20 190 L105 128 M220 190 L135 128" stroke="#e19aae" strokeWidth="2" />
+      <circle cx="120" cy="140" r="12" fill="#e0475b" />
+      <text x="120" y="145" textAnchor="middle" fontFamily={serif} fontSize="14" fill="#f9d4dc">H</text>
     </svg>
   );
 }
@@ -108,8 +100,8 @@ export function Camera() {
     <svg viewBox="0 0 280 190" aria-hidden="true">
       <defs>
         <linearGradient id="cam" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#dfe3e8" />
-          <stop offset="1" stopColor="#8e96a3" />
+          <stop offset="0" stopColor="#f7c8d8" />
+          <stop offset="1" stopColor="#d993ad" />
         </linearGradient>
         <radialGradient id="lens" cx="40%" cy="35%" r="70%">
           <stop offset="0" stopColor="#6b7a8f" />
@@ -118,7 +110,7 @@ export function Camera() {
         </radialGradient>
       </defs>
       <rect x="12" y="28" width="256" height="150" rx="18" fill="url(#cam)" />
-      <rect x="12" y="28" width="256" height="150" rx="18" fill="none" stroke="#5f6773" strokeWidth="2" />
+      <rect x="12" y="28" width="256" height="150" rx="18" fill="none" stroke="#c07c96" strokeWidth="2" />
       <rect x="40" y="16" width="56" height="18" rx="5" fill="#c9c3c8" />
       <rect x="190" y="18" width="40" height="14" rx="4" fill="#e7e2e6" />
       <rect x="62" y="44" width="58" height="26" rx="4" fill="#dcdcdc" stroke="#a9a2a6" />
@@ -161,7 +153,7 @@ export function VinylSleeve({ title }: { title: string }) {
         <path d="M130 40 A 90 90 0 0 1 250 40" stroke="#ffffff" strokeOpacity="0.22" strokeWidth="6" fill="none" />
       </g>
       <g transform="rotate(-4 150 190)">
-        <rect x="30" y="80" width="230" height="210" fill="#2a4bd7" />
+        <rect x="30" y="80" width="230" height="210" fill="#f5b8d0" />
         {words.map((w, i) => (
           <text
             key={i}
@@ -171,18 +163,18 @@ export function VinylSleeve({ title }: { title: string }) {
             fontWeight="800"
             fontSize="44"
             letterSpacing="-1"
-            fill="#f2c23d"
+            fill="#d8323f"
             transform={`rotate(${i % 2 ? 2 : -2} 48 ${132 + i * 46})`}
           >
             {w}
           </text>
         ))}
         {/* little flower doodle */}
-        <g transform="translate(222 254)" fill="#f2c23d">
+        <g transform="translate(222 254)" fill="#d8323f">
           {[0, 72, 144, 216, 288].map((a) => (
             <ellipse key={a} rx="7" ry="13" transform={`rotate(${a}) translate(0 -12)`} />
           ))}
-          <circle r="6" fill="#2a4bd7" />
+          <circle r="6" fill="#f5b8d0" />
         </g>
         <rect x="44" y="262" width="62" height="16" fill="#fff" />
         <text x="48" y="274" fontFamily={mono} fontSize="9" fill="#222">SIDE A · 2026</text>

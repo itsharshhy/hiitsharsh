@@ -79,3 +79,53 @@
   pointer-events: none;
   overflow: visible;
 }
+
+/* paper tones for notes */
+.note {
+  font-family: var(--hand);
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: #1b1a19;
+}
+.note--paper { background: #fffdf8; }
+.note--lemon { background: #f6ea7a; }
+.note--lilac { background: #d6b8f0; }
+.note--pink { background: #f9c3de; }
+/* a strip of masking tape instead of a scrap */
+.note--tape {
+  padding: 6px 18px 4px;
+  box-shadow: none;
+  opacity: 0.95;
+}
+.note--tape::before {
+  display: none;
+}
+
+.ink-flower {
+  overflow: visible;
+}
+
+/* navy pill button, like a "book a session" button */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 30px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--pink);
+  font: 500 1.15rem var(--display);
+  text-decoration: none;
+  box-shadow: 0 12px 24px -12px rgba(19, 49, 140, 0.7);
+  transition: transform 0.25s var(--ease);
+}
+.pill:hover {
+  transform: translateY(-3px) rotate(-1deg);
+}
+.pill--ghost {
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+  box-shadow: none;
+}
