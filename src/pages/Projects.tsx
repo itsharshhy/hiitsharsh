@@ -81,7 +81,7 @@ export default function Projects() {
       {/* ---------- one section per project ---------- */}
       {projects.map((p, i) => (
         <section key={p.slug} id={p.slug} className={`pj ${i % 2 ? 'pj--flip pj--pink on-dark' : ''}`}>
-          <Torn color={i % 2 ? 'var(--eastbay)' : 'var(--cream-2)'} under={['var(--eastbay-deep)', 'var(--eastbay-soft)', 'var(--eastbay-deep)'][i]} seed={11 + i * 9} className="torn--top" />
+          <Torn color={i % 2 ? 'var(--olive)' : 'var(--cream-2)'} under={['var(--olive-deep)', 'var(--olive-soft)', 'var(--olive-deep)'][i]} seed={11 + i * 9} className="torn--top" />
           <div className="pj__inner">
             <div className="pj__text">
               <p className="pj__num">0{i + 1}</p>

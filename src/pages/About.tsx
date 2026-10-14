@@ -14,11 +14,11 @@ const toolbox = ['TypeScript', 'JavaScript', 'React', 'HTML & CSS', 'Canvas', 'R
 
 // The portrait cut into strips and re-glued slightly off, with torn coloured paper between.
 const strips = [
-  { top: 0, h: 24, x: -8, rot: -1.5, paper: 'var(--eastbay-soft)' },
-  { top: 24, h: 16, x: 12, rot: 1, paper: 'var(--rum-deep)' },
-  { top: 40, h: 20, x: -4, rot: -0.8, paper: 'var(--eastbay)' },
-  { top: 60, h: 18, x: 10, rot: 1.4, paper: 'var(--eastbay-mist)' },
-  { top: 78, h: 22, x: -6, rot: -1, paper: 'var(--eastbay-deep)' },
+  { top: 0, h: 24, x: -8, rot: -1.5, paper: 'var(--olive-soft)' },
+  { top: 24, h: 16, x: 12, rot: 1, paper: 'var(--beige-deep)' },
+  { top: 40, h: 20, x: -4, rot: -0.8, paper: 'var(--olive)' },
+  { top: 60, h: 18, x: 10, rot: 1.4, paper: 'var(--olive-mist)' },
+  { top: 78, h: 22, x: -6, rot: -1, paper: 'var(--olive-deep)' },
 ];
 
 export default function About() {
@@ -53,7 +53,7 @@ export default function About() {
           <span className="ab-hero__scrawl" aria-hidden="true">
             this morning was a<br />
             good debugging day
-            <Arrow className="ab-hero__scrawl-arrow" color="var(--rum)" />
+            <Arrow className="ab-hero__scrawl-arrow" color="var(--beige)" />
           </span>
         </div>
 
@@ -136,7 +136,7 @@ export default function About() {
 
       {/* ---------- currently + likes: pink paper ---------- */}
       <section className="ab-now on-dark">
-        <Torn color="var(--eastbay)" under="var(--eastbay-soft)" seed={21} className="torn--top" />
+        <Torn color="var(--olive)" under="var(--olive-soft)" seed={21} className="torn--top" />
         <div className="ab-now__inner">
           <Kinetic as="h2" text="CURRENTLY" className="ab-big" />
           <div className="cards">

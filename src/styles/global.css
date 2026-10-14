@@ -1,32 +1,32 @@
 :root {
-  /* palette: East Bay + Rum Swizzle, plus tints of the two */
-  --eastbay: #474c80;
-  --eastbay-deep: #353966;
-  --eastbay-soft: #8a8fc2;
-  --eastbay-mist: #c9cbec;
-  --rum: #f8f7e2;
-  --rum-deep: #e9e6c4;
+  /* palette: Olive Green + Beige Cream, plus tints of the two */
+  --olive: #4d694e; /* olive green */
+  --olive-deep: #3a523b;
+  --olive-soft: #8fa98d;
+  --olive-mist: #d3dfc9;
+  --beige: #fff3d5; /* beige cream */
+  --beige-deep: #f1e2bb;
 
-  --night: var(--eastbay);
-  --night-2: var(--eastbay-deep);
-  --cream: var(--rum);
-  --paper: var(--rum);
-  --ink: #2b2f55;
-  --muted: #b9bce0;
-  --cherry: var(--eastbay-soft);
-  --mustard: var(--rum-deep);
+  --night: var(--olive);
+  --night-2: var(--olive-deep);
+  --cream: var(--beige);
+  --paper: var(--beige);
+  --ink: #2b3a2c;
+  --muted: #c2d3bb;
+  --cherry: var(--olive-soft);
+  --mustard: var(--beige-deep);
   /* collage names, mapped onto the palette */
-  --pink: #d6d8f2;
-  --pen: var(--eastbay);
-  --red: var(--eastbay-soft);
-  --lemon: var(--rum-deep);
-  --sky: var(--eastbay-mist);
-  --lilac: var(--eastbay-mist);
-  --cream-2: var(--rum);
-  --cobalt: var(--eastbay-deep);
-  --navy: var(--eastbay);
-  --tomato: var(--eastbay-soft);
-  --kraft: var(--rum-deep);
+  --pink: #e3ebd6;
+  --pen: var(--olive);
+  --red: var(--olive-soft);
+  --lemon: var(--beige-deep);
+  --sky: var(--olive-mist);
+  --lilac: var(--olive-mist);
+  --cream-2: var(--beige);
+  --cobalt: var(--olive-deep);
+  --navy: var(--olive);
+  --tomato: var(--olive-soft);
+  --kraft: var(--beige-deep);
   --serif: 'Instrument Serif', Georgia, serif;
   --sans: 'Instrument Sans Variable', system-ui, sans-serif;
   --hand: 'Patrick Hand', 'Comic Sans MS', cursive;
@@ -193,17 +193,17 @@ h3 {
   rotate: -4deg;
   opacity: 0.85;
   z-index: 2;
-  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.25) 0 6px, transparent 6px 12px), var(--tape, #e9e6c4);
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.25) 0 6px, transparent 6px 12px), var(--tape, #f1e2bb);
   clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
 }
 .tape--kraft {
-  --tape: #e9e6c4;
+  --tape: #f1e2bb;
 }
 .tape--blue {
-  --tape: #c9cbec;
+  --tape: #d3dfc9;
 }
 .tape--yellow {
-  --tape: #dcdcf0;
+  --tape: #e6eddc;
 }
 
 .polaroid {
@@ -381,13 +381,13 @@ h3 {
 
 .sticky-note {
   aspect-ratio: 1;
-  background: linear-gradient(160deg, #f8f7e2, #e9e6c4);
+  background: linear-gradient(160deg, #fff3d5, #f1e2bb);
   padding: 14% 12%;
   display: flex;
   flex-direction: column;
   gap: 2px;
   font: clamp(0.8rem, 1.1vw, 1.1rem) / 1.3 var(--hand);
-  color: #474c80;
+  color: #4d694e;
   clip-path: polygon(0 0, 100% 0, 100% 88%, 90% 100%, 0 100%);
 }
 @media (max-width: 720px) {
@@ -614,9 +614,9 @@ h3 {
 /* ---------- footer ---------- */
 
 .footer {
-  border-top: 1px dashed rgba(248, 247, 226, 0.25);
+  border-top: 1px dashed rgba(255, 243, 213, 0.25);
   padding: 50px var(--gutter) 30px;
-  background: var(--eastbay-deep);
+  background: var(--olive-deep);
   color: var(--cream);
 }
 .footer__big {
@@ -662,7 +662,7 @@ h3 {
   letter-spacing: 0.12em;
 }
 .dymo > li {
-  background: var(--eastbay);
+  background: var(--olive);
   color: #f4f1ea;
   padding: 6px 14px;
   border-radius: 3px;
@@ -670,10 +670,10 @@ h3 {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 .dymo > li:nth-child(3n + 2) {
-  background: #6b70a8;
+  background: #6d8a6b;
 }
 .dymo > li:nth-child(3n) {
-  background: var(--eastbay-deep);
+  background: var(--olive-deep);
 }
 /* ---------- case study ---------- */
 
@@ -835,17 +835,17 @@ h3 {
   background: none;
 }
 .dymo--notes strong {
-  background: var(--eastbay);
+  background: var(--olive);
   color: #f4f1ea;
   padding: 5px 12px;
   border-radius: 3px;
   font-weight: 500;
 }
 .dymo--notes > li:nth-child(3n + 2) strong {
-  background: #6b70a8;
+  background: #6d8a6b;
 }
 .dymo--notes > li:nth-child(3n) strong {
-  background: var(--eastbay-deep);
+  background: var(--olive-deep);
 }
 .dymo--notes span {
   font: 1.15rem var(--hand);
@@ -1026,163 +1026,6 @@ h3 {
   opacity: 0.75;
 }
 
-/* ---------- contact ---------- */
-
-.contact {
-  background: var(--rum);
-  color: var(--ink);
-  padding: 100px var(--gutter) 100px;
-  min-height: 100svh;
-}
-.contact__head {
-  max-width: 1100px;
-  margin: 0 auto 50px;
-}
-.contact__head h1 {
-  font-size: clamp(3.4rem, 9vw, 7rem);
-}
-.contact__head .scribble {
-  color: var(--eastbay-soft);
-  font-size: 1.4rem;
-}
-.contact__grid {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 60px;
-  align-items: start;
-}
-@media (max-width: 860px) {
-  .contact__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.mail {
-  position: relative;
-  padding-top: 60px;
-  perspective: 1200px;
-}
-.mail__back {
-  position: absolute;
-  inset: 120px 0 0 0;
-  background: #8a8fc2;
-  border-radius: 6px;
-}
-.mail__flap {
-  position: absolute;
-  top: 120px;
-  left: 0;
-  right: 0;
-  height: 160px;
-  background: #6b70a8;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: top;
-  z-index: 1;
-}
-.mail__front {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 140px;
-  background: linear-gradient(160deg, #a3a7d6, #8a8fc2);
-  clip-path: polygon(0 0, 50% 45%, 100% 0, 100% 100%, 0 100%);
-  border-radius: 0 0 6px 6px;
-  z-index: 3;
-  pointer-events: none;
-}
-.letter {
-  position: relative;
-  z-index: 2;
-  margin: 0 5% 20px;
-  background: #fffdf7;
-  padding: 34px 34px 150px;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
-  background-image: repeating-linear-gradient(transparent 0 33px, #dfe9f5 33px 34px);
-  display: grid;
-  gap: 16px;
-}
-.letter__dear {
-  font: 2rem var(--hand);
-  margin: 0;
-}
-.letter label {
-  display: grid;
-  gap: 4px;
-}
-.letter label span {
-  font: 1.2rem var(--hand);
-  color: #7d756b;
-}
-.letter input,
-.letter textarea {
-  font: 1.35rem var(--hand);
-  border: none;
-  border-bottom: 2px dashed #c9bfae;
-  background: transparent;
-  padding: 6px 2px;
-  color: var(--ink);
-  resize: vertical;
-}
-.letter input:focus,
-.letter textarea:focus {
-  outline: none;
-  border-bottom-color: var(--cherry);
-}
-.letter .btn {
-  justify-self: start;
-  margin-top: 8px;
-}
-.letter__soon {
-  font: 1.2rem var(--hand);
-  color: var(--cherry);
-  margin: 0;
-}
-
-.stamps h2 {
-  font-size: 2.6rem;
-  margin-bottom: 24px;
-}
-.stamps ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 24px;
-  display: grid;
-  gap: 14px;
-}
-.stamp {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 20px;
-  background: #fffdf7;
-  text-decoration: none;
-  border-radius: 4px;
-  box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.35);
-  outline: 2px dashed var(--eastbay-mist);
-  outline-offset: -8px;
-  transition: background 0.2s;
-}
-.stamp:hover {
-  background: #fff;
-}
-.stamp__label {
-  font: 1.25rem var(--hand);
-  color: var(--eastbay);
-}
-.stamp__value {
-  font: 0.9rem var(--mono);
-  overflow-wrap: anywhere;
-  text-align: right;
-}
-.stamps__where {
-  font: 1.2rem var(--hand);
-  margin-top: 22px;
-}
-
 /* ---------- 404 ---------- */
 
 .lost {
@@ -1227,17 +1070,6 @@ h3 {
 }
 .footer {
   overflow: visible;
-}
-.mail__cat {
-  position: absolute;
-  width: 92px;
-  right: 8%;
-  top: 74px;
-  z-index: 4;
-}
-.stamps__cat {
-  width: 130px;
-  margin-top: 10px;
 }
 .next__cat {
   display: block;

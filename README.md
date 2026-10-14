@@ -9,7 +9,7 @@ My portfolio, made to feel like a scrapbook on a desk: drag the stickers around,
 | `/` | A dark desk covered in draggable scrapbook objects (beads that spell my name, an envelope, a camera, a record, tickets, a pebble dish…). Some of them are doors: the envelope opens Contact, the camera opens About, and the record, tickets and pebble dish open each project. Below: the three projects as taped-down polaroids. |
 | `/work/:slug` | A case study per project: the gist, why it exists, how it's made, how it looks (palette + type), what's inside, what I learned. Each page takes on that project's own colours. |
 | `/about` | A zine-style "HELLO! I AM…" poster with an animated illustrated me (blinks, follows your cursor, waves), then the longer story. |
-| `/contact` | An envelope that opens into a letter. Writing it opens your email app with the message already filled in. |
+| `/contact` | A letter on a writing desk. Hit "seal & send" and it folds into the envelope, gets a wax seal, and a little bird flies off with it; then your email app opens with the letter ready. Socials are postage stamps. |
 
 ## How it's built
 
@@ -19,7 +19,8 @@ My portfolio, made to feel like a scrapbook on a desk: drag the stickers around,
 - **Framer Motion**: dragging stickers, spring physics, page transitions, scroll-in reveals, the avatar's wave. All of it respects "reduce motion".
 - **Inline SVG illustrations**: every object on the desk and every doodle is drawn in code. No stock images, crisp at any size, tiny to download.
 - **Self-hosted fonts** via Fontsource: Instrument Serif, Instrument Sans, Patrick Hand, DM Mono.
-- **Vercel**: hosting, with `vercel.json` rewrites so deep links work.
+- **GitHub Pages**: hosting. `.github/workflows/deploy.yml` builds and publishes on every push (Vercel also works via `vercel.json`).
+- **Palette**: Olive Green `#4D694E` and Beige Cream `#FFF3D5` (tokens at the top of `src/styles/global.css`).
 
 ## Editing
 

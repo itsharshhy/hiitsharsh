@@ -1,0 +1,440 @@
+/* Contact: an olive cover, then a writing desk with a letter, an envelope and a stamp sheet. */
+
+.contact {
+  background: var(--olive);
+  color: var(--beige);
+  font-family: var(--display);
+  overflow: hidden;
+}
+
+/* ----- hero ----- */
+.ct-hero {
+  position: relative;
+  padding: 120px var(--gutter) 120px;
+}
+.ct-hero__stage {
+  position: relative;
+  max-width: 1300px;
+  margin: 0 auto;
+  min-height: clamp(300px, 30vw, 440px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ct-hero__line {
+  font-weight: 700;
+  font-size: clamp(3rem, 11vw, 11rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--beige);
+  position: relative;
+  z-index: 2;
+}
+.ct-hero__sub {
+  font: 1.4rem var(--hand);
+  margin: 18px 0 0 4px;
+  color: var(--olive-mist);
+}
+.ct-hero__bird {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 90px;
+  z-index: 3;
+  pointer-events: none;
+}
+.ct-hero__flower {
+  position: absolute;
+  right: 6%;
+  bottom: -20px;
+  width: clamp(70px, 8%, 110px);
+  height: auto;
+  color: var(--beige);
+}
+.ct-hero__n1 { right: 18%; top: 4%; }
+.ct-hero__n2 { left: 40%; bottom: 0; }
+.ct-hero__cat {
+  position: absolute;
+  z-index: 4;
+  width: clamp(64px, 6%, 90px);
+  left: 30%;
+  top: 2%;
+}
+@media (max-width: 760px) {
+  .ct-hero__line {
+    white-space: normal;
+    font-size: clamp(3rem, 18vw, 6rem);
+  }
+  .ct-hero__n1 { right: 4%; top: -10px; }
+  .ct-hero__n2 { left: auto; right: 4%; bottom: -40px; }
+  .ct-hero__cat { left: 2%; right: auto; top: -60px; }
+  .ct-hero__flower { display: none; }
+}
+
+/* ----- desk ----- */
+.ct-desk {
+  position: relative;
+  background-color: var(--beige);
+  background-image: radial-gradient(rgba(77, 105, 78, 0.16) 1px, transparent 1.4px);
+  background-size: 26px 26px;
+  color: var(--olive);
+  padding: 90px var(--gutter) 130px;
+}
+.ct-desk__grid {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .ct-desk__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* the letter + envelope travel together */
+.post {
+  position: relative;
+}
+.carry {
+  position: relative;
+  padding: 30px 0 150px;
+  perspective: 1400px;
+}
+.env__back {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 330px;
+  background: var(--olive-soft);
+  border-radius: 6px;
+  z-index: 0;
+}
+.env__flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 330px;
+  height: 170px;
+  transform-origin: 50% 100%;
+  background: var(--olive);
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
+  z-index: 0;
+}
+/* once closing, the flap drops over the front of the envelope */
+.env__flap--shut {
+  transform-origin: 50% 100%;
+}
+.env__flap--shut {
+  z-index: 5;
+}
+.env__front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 230px;
+  z-index: 3;
+  background: linear-gradient(160deg, #a9bfa3, #8fa98d);
+  clip-path: polygon(0 0, 50% 42%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 6px 6px;
+  pointer-events: none;
+}
+.env__to {
+  position: absolute;
+  left: 9%;
+  bottom: 28px;
+  font: 1.15rem/1.3 var(--hand);
+  color: var(--olive-deep);
+}
+.env__seal {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: 330px;
+  translate: -50% 135px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, #6d8a6b, var(--olive-deep));
+  color: var(--beige);
+  font: 2rem var(--serif);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.15), inset 0 0 0 4px rgba(255, 243, 213, 0.18);
+}
+.env__bird {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  bottom: 300px;
+  width: 170px;
+  margin-left: -85px;
+  pointer-events: none;
+}
+
+/* the letter itself */
+.paper {
+  position: relative;
+  z-index: 2;
+  margin: 0 6%;
+  padding: 36px 36px 120px;
+  background: #fffaf0;
+  background-image: repeating-linear-gradient(transparent 0 35px, #e6eddc 35px 36px);
+  background-position: 0 18px;
+  color: var(--ink);
+  box-shadow: 0 16px 34px -18px rgba(43, 58, 44, 0.45);
+  display: grid;
+  gap: 18px;
+}
+.paper__stamp {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 64px;
+  height: 78px;
+  padding: 6px;
+  background: radial-gradient(circle, transparent 3.5px, var(--olive) 4px) -5px -5px / 10px 10px;
+  rotate: 6deg;
+}
+.paper__stamp span,
+.paper__stamp b {
+  position: absolute;
+  inset: 6px;
+  background: var(--beige);
+  display: grid;
+  place-items: center;
+  color: var(--olive);
+}
+.paper__stamp span {
+  inset: 6px 6px auto;
+  height: 16px;
+  font: 0.65rem var(--mono);
+  background: transparent;
+  z-index: 1;
+}
+.paper__stamp b {
+  font: 1.9rem var(--serif);
+  padding-top: 8px;
+}
+.paper__dear {
+  font: 2.2rem var(--hand);
+  margin: 0;
+  color: var(--olive-deep);
+}
+.paper__topics {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.paper__topics legend {
+  font: 1.15rem var(--hand);
+  color: #7d756b;
+  margin-bottom: 8px;
+  padding: 0;
+}
+.paper__topics label {
+  font: 1.05rem var(--hand);
+  padding: 4px 14px;
+  border: 2px dashed var(--olive-soft);
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--olive);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.paper__topics label:hover {
+  transform: rotate(-2deg);
+}
+.paper__topics label.is-on {
+  background: var(--olive);
+  color: var(--beige);
+  border-style: solid;
+  border-color: var(--olive);
+}
+.paper__topics input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.paper__topics label:has(input:focus-visible) {
+  outline: 3px dashed var(--olive-soft);
+  outline-offset: 3px;
+}
+.paper__field {
+  display: grid;
+  gap: 4px;
+}
+.paper__field span {
+  font: 1.15rem var(--hand);
+  color: #7d756b;
+}
+.paper__field input,
+.paper__field textarea {
+  font: 1.4rem/36px var(--hand);
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  padding: 0 2px;
+  resize: vertical;
+}
+.paper__field input {
+  border-bottom: 2px dashed var(--olive-mist);
+}
+.paper__field input:focus,
+.paper__field textarea:focus {
+  outline: none;
+  background: rgba(211, 223, 201, 0.25);
+}
+.paper__field--sign {
+  max-width: 320px;
+  justify-self: end;
+}
+.paper__send {
+  justify-self: start;
+  border: 0;
+  cursor: pointer;
+}
+.paper__send:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* after sending */
+.sent {
+  position: relative;
+  background: #fffaf0;
+  color: var(--ink);
+  padding: 46px 40px 50px;
+  margin: 30px 6% 0;
+  box-shadow: 0 16px 34px -18px rgba(43, 58, 44, 0.45);
+}
+.sent__title {
+  font-weight: 700;
+  font-size: clamp(3rem, 7vw, 5rem);
+  line-height: 1;
+  color: var(--olive);
+  margin-bottom: 16px;
+}
+.sent p {
+  font-size: 1.15rem;
+  margin: 0 0 10px;
+}
+.sent__hint {
+  font: 1.15rem var(--hand) !important;
+  color: #7d756b;
+  margin-bottom: 26px !important;
+}
+.sent__cat {
+  position: absolute;
+  width: 120px;
+  right: 20px;
+  top: -40px;
+}
+
+/* ----- stamps ----- */
+.stamps h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  margin: 30px 0 26px;
+  color: var(--olive);
+}
+.stamp-sheet {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.pstamp {
+  display: block;
+  padding: 9px;
+  text-decoration: none;
+  /* perforated edge: a sheet of little holes around a solid panel */
+  background: radial-gradient(circle, transparent 4px, #fffaf0 4.5px) -6px -6px / 12px 12px;
+  filter: drop-shadow(0 8px 10px rgba(43, 58, 44, 0.25));
+}
+.pstamp__in {
+  display: grid;
+  gap: 4px;
+  padding: 12px 12px 14px;
+  background: var(--olive);
+  color: var(--beige);
+  outline: 1.5px solid rgba(255, 243, 213, 0.5);
+  outline-offset: -6px;
+  min-height: 150px;
+}
+.stamp-sheet li:nth-child(even) .pstamp__in {
+  background: var(--olive-soft);
+  color: var(--olive-deep);
+  outline-color: rgba(58, 82, 59, 0.4);
+}
+.pstamp__top {
+  display: flex;
+  justify-content: space-between;
+  font: 0.65rem var(--mono);
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+.pstamp__icon {
+  font: 2.4rem/1.1 var(--serif);
+  text-align: center;
+  margin: 4px 0;
+}
+.pstamp__label {
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pstamp__value {
+  font: 0.78rem var(--mono);
+  overflow-wrap: anywhere;
+  opacity: 0.9;
+}
+.rubber {
+  font: 700 1.05rem var(--display);
+  letter-spacing: 0.12em;
+  color: var(--olive);
+  background: transparent;
+  border: 3px solid var(--olive);
+  border-radius: 8px;
+  padding: 10px 20px;
+  rotate: -4deg;
+  cursor: pointer;
+  mix-blend-mode: multiply;
+}
+.rubber:hover {
+  background: rgba(77, 105, 78, 0.08);
+}
+.stamps__foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.postmark {
+  width: 200px;
+  color: var(--olive-soft);
+}
+.stamps__cat {
+  width: 130px;
+}
+@media (max-width: 520px) {
+  .paper {
+    margin: 0 2%;
+    padding: 28px 22px 120px;
+  }
+  .stamp-sheet {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+}

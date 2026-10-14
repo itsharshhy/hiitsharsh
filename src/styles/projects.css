@@ -1,8 +1,8 @@
 /* Projects: pink cover, then torn cream / pink sheets, one per project. */
 
 .projects {
-  background: var(--eastbay);
-  color: var(--rum);
+  background: var(--olive);
+  color: var(--beige);
   font-family: var(--display);
   overflow: hidden;
 }
@@ -29,7 +29,7 @@
   line-height: 1.02;
   white-space: nowrap;
   letter-spacing: 0.02em;
-  color: var(--rum);
+  color: var(--beige);
 }
 .pj-hero__line--2 {
   padding-left: 8%;
@@ -47,7 +47,7 @@
   padding: 7px 7px 8px;
   text-decoration: none;
   color: var(--ink);
-  box-shadow: 0 20px 28px -16px rgba(19, 49, 140, 0.55);
+  box-shadow: 0 20px 28px -16px rgba(77, 105, 78, 0.55);
 }
 .pj-cut img {
   width: 100%;
@@ -126,19 +126,19 @@
 .pj {
   position: relative;
   background: var(--cream-2);
-  color: var(--eastbay);
+  color: var(--olive);
   padding: 100px var(--gutter) 140px;
 }
 .pj--pink {
-  background: var(--eastbay);
-  color: var(--rum);
+  background: var(--olive);
+  color: var(--beige);
 }
 .pj--pink .pj__title,
 .pj--pink .pj__meta {
-  color: var(--rum);
+  color: var(--beige);
 }
 .pj--pink .pj__num {
-  -webkit-text-stroke-color: var(--rum);
+  -webkit-text-stroke-color: var(--beige);
 }
 .pj__inner {
   max-width: 1200px;
@@ -203,13 +203,13 @@
 }
 .pj__scrap--0 { background: var(--cobalt); }
 .pj__scrap--1 { background: var(--red); }
-.pj__scrap--2 { background: var(--eastbay-mist); }
+.pj__scrap--2 { background: var(--olive-mist); }
 .pj__shot {
   position: relative;
   margin: 0;
   background: #fffdf8;
   padding: 10px;
-  box-shadow: 0 30px 40px -22px rgba(19, 49, 140, 0.55);
+  box-shadow: 0 30px 40px -22px rgba(77, 105, 78, 0.55);
 }
 .pj__shot img {
   width: 100%;
@@ -271,7 +271,7 @@
 .pj-end {
   position: relative;
   background: var(--cream-2);
-  color: var(--eastbay);
+  color: var(--olive);
   text-align: center;
   padding: 100px var(--gutter) 120px;
 }
@@ -287,8 +287,8 @@
 }
 
 .on-dark .bubble p {
-  color: var(--rum);
+  color: var(--beige);
 }
 .on-dark .ink-flower {
-  color: var(--rum);
+  color: var(--beige);
 }

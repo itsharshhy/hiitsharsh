@@ -89,9 +89,9 @@
   color: #1b1a19;
 }
 .note--paper { background: #fffef4; }
-.note--lemon { background: #e9e6c4; }
-.note--lilac { background: #c9cbec; }
-.note--pink { background: #dcdcf0; }
+.note--lemon { background: #f1e2bb; }
+.note--lilac { background: #d3dfc9; }
+.note--pink { background: #e6eddc; }
 /* a strip of masking tape instead of a scrap */
 .note--tape {
   padding: 6px 18px 4px;
@@ -113,11 +113,11 @@
   gap: 12px;
   padding: 16px 30px;
   border-radius: 999px;
-  background: var(--eastbay);
-  color: var(--rum);
+  background: var(--olive);
+  color: var(--beige);
   font: 500 1.15rem var(--display);
   text-decoration: none;
-  box-shadow: 0 12px 24px -12px rgba(19, 49, 140, 0.7);
+  box-shadow: 0 12px 24px -12px rgba(77, 105, 78, 0.7);
   transition: transform 0.25s var(--ease);
 }
 .pill:hover {
@@ -132,15 +132,15 @@
 
 /* on East Bay paper, flip the pills and pen to cream */
 .on-dark {
-  --pen: var(--rum);
+  --pen: var(--beige);
 }
 .on-dark .pill:not(.pill--ghost) {
-  background: var(--rum);
-  color: var(--eastbay);
+  background: var(--beige);
+  color: var(--olive);
 }
 .on-dark .pill--ghost {
-  color: var(--rum);
-  border-color: var(--rum);
+  color: var(--beige);
+  border-color: var(--beige);
 }
 .ink-flower path {
   stroke: currentColor;
