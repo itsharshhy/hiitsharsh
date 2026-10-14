@@ -4,7 +4,8 @@
   background: var(--olive);
   color: var(--beige);
   font-family: var(--display);
-  overflow: hidden;
+  /* clip (not hidden) so the pinned portrait in the story can stick */
+  overflow-x: clip;
 }
 
 /* ----- hero ----- */
@@ -168,15 +169,15 @@
   max-width: 1150px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  gap: clamp(50px, 8vw, 120px);
+  grid-template-columns: minmax(280px, 0.8fr) 1.3fr;
+  gap: clamp(40px, 5vw, 80px);
   align-items: start;
 }
 /* the sliced portrait stays put while the story scrolls past */
 .ab-story__grid .sliced {
   position: sticky;
-  top: 140px;
-  margin-top: 60px;
+  top: max(110px, calc(50vh - 240px));
+  margin-top: 40px;
 }
 .sliced {
   position: relative;
@@ -207,8 +208,8 @@
   text-transform: uppercase;
   color: var(--ink);
 }
-.sliced__scrawl--1 { left: -26%; top: 40%; }
-.sliced__scrawl--2 { right: -22%; top: 8%; }
+.sliced__scrawl--1 { left: 40%; bottom: -16%; }
+.sliced__scrawl--2 { right: 0; top: -9%; }
 .sliced__cat {
   position: absolute;
   width: 32%;
@@ -225,11 +226,11 @@
   color: var(--navy);
 }
 .ab-story__text p {
-  font-size: 1.08rem;
+  font-size: 1.12rem;
   line-height: 1.7;
   color: var(--navy);
   margin: 0 0 1.15em;
-  max-width: 600px;
+  max-width: 660px;
 }
 .ab-story__text em {
   font-family: var(--serif);
@@ -275,7 +276,6 @@
   .sliced {
     width: min(74%, 340px);
   }
-  .sliced__scrawl--1 { left: -22%; }
   .sliced__scrawl--2 { display: none; }
 }
 
