@@ -75,6 +75,7 @@ export default function Home() {
         <header className="work-list__head">
           <h2 id="work-title">The Work</h2>
           <p className="scribble">three things I made & love ↓</p>
+          <Link to="/work" className="work-list__all">see them all on the projects page →</Link>
         </header>
 
         {projects.map((p, i) => (

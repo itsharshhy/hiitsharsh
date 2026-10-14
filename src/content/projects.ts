@@ -12,6 +12,7 @@ export type Project = {
   links: { label: string; href: string }[];
   theme: { paper: string; ink: string; accent: string; wash: string };
   sticker: string; // short handwritten note on the polaroid
+  status: string; // rubber stamp on the projects page
   gist: string[];
   why: string;
   stack: { name: string; note: string }[];
@@ -36,6 +37,7 @@ export const projects: Project[] = [
     ],
     theme: { paper: '#eef5e6', ink: '#24352a', accent: '#6b8f5a', wash: '#cfe6f1' },
     sticker: 'hop · plant · grow',
+    status: 'live',
     gist: [
       'You hop from island to island. Every few islands the game asks you a question, and whatever you write grows into a flower in your garden.',
       'Play a calm walk with no timers and no losing, answer the same question as everyone else today, climb crumbling islands, or open a live room with a friend using a code like MOSS-4821.',
@@ -95,6 +97,7 @@ export const projects: Project[] = [
     ],
     theme: { paper: '#f5efe6', ink: '#2c332e', accent: '#4e6a57', wash: '#e3eadf' },
     sticker: 'did it happen?',
+    status: 'in testing',
     gist: [
       'You write a worry in one line and pick a day to look back. On that day Pebble asks one gentle question: did it happen?',
       'Over time you build a quiet, personal record of how often your mind’s forecasts came true. It runs on Windows, macOS and Linux.',
@@ -151,6 +154,7 @@ export const projects: Project[] = [
     ],
     theme: { paper: '#f5f3ef', ink: '#171514', accent: '#9e776b', wash: '#ebe3dc' },
     sticker: 'seven ways to feel wonderful',
+    status: 'pitched',
     gist: [
       '7 Wonders Studio is a hair, skin and grooming salon on one of Mumbai’s most competitive salon streets. It had Instagram and listing sites, but no website of its own.',
       'We designed the site, wrote a full product brief and a pitch guide, and deployed a live demo so the owner could open it on their own phone.',

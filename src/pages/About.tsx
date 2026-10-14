@@ -47,7 +47,7 @@ export default function About() {
             <motion.div className="dd dd--burst" {...pop(0.9)}><Burst /></motion.div>
           </div>
         </article>
-        <p className="scribble poster-wrap__hint">(go on, wave back. hover or tap me.)</p>
+        <p className="scribble poster-wrap__hint">(poke me. I'm only half listening, the music's good.)</p>
       </div>
 
       <section className="story">

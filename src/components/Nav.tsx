@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 const links = [
   { to: '/', label: 'Home' },
-  { to: '/#work', label: 'The Work' },
+  { to: '/work', label: 'Projects' },
   { to: '/about', label: 'About Me' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -25,8 +25,8 @@ export default function Nav() {
           <NavLink
             key={l.to}
             to={l.to}
-            end
-            className={({ isActive }) => (isActive && !(l.to === '/' && hash) ? 'is-active' : undefined)}
+            end={l.to !== '/work'}
+            className={({ isActive }) => (isActive ? 'is-active' : undefined)}
           >
             {l.label}
           </NavLink>

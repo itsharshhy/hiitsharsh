@@ -9,10 +9,10 @@ export const site = {
   role: 'designer & developer',
   location: 'Mumbai, India',
 
-  email: '',
+  email: 'hiharshhyadav@gmail.com',
   phone: '',
-  instagram: '', // full URL, e.g. https://instagram.com/yourhandle
-  twitter: '', // full URL, e.g. https://x.com/yourhandle
+  instagram: 'https://instagram.com/hiharshh',
+  twitter: '', // full URL, e.g. https://x.com/yourhandle (empty = hidden)
   linkedin: '',
   github: 'https://github.com/itsharshhy',
 

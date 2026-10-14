@@ -31,7 +31,7 @@ export default function Work() {
         className="case__paper"
         style={{ '--paper': p.theme.paper, '--ink': p.theme.ink, '--accent': p.theme.accent, '--wash': p.theme.wash } as React.CSSProperties}
       >
-        <Link to="/#work" className="case__back">← back to the archive</Link>
+        <Link to="/work" className="case__back">← all projects</Link>
 
         <header className="case__hero">
           <div>
