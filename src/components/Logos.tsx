@@ -4,10 +4,12 @@
 const INK = '#3a523b';
 const BLOB = 'M32 3 C 48 2, 62 14, 61 31 C 62 48, 49 62, 31 61 C 14 62, 2 48, 3 31 C 2 15, 15 3, 32 3 Z';
 
-function Badge({ children, title }: { children: React.ReactNode; title: string }) {
+type P = { bare?: boolean };
+
+function Badge({ children, title, bare }: { children: React.ReactNode; title: string; bare?: boolean }) {
   return (
-    <svg className="logo" viewBox="0 0 64 64" role="img" aria-label={title}>
-      <path d={BLOB} fill="#fff3d5" stroke={INK} strokeWidth="2.5" />
+    <svg className={`logo ${bare ? 'logo--bare' : ''}`} viewBox="0 0 64 64" role="img" aria-label={title}>
+      {!bare && <path d={BLOB} fill="#fff3d5" stroke={INK} strokeWidth="2.5" />}
       <g fill="none" stroke={INK} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
         {children}
       </g>
@@ -15,9 +17,9 @@ function Badge({ children, title }: { children: React.ReactNode; title: string }
   );
 }
 
-export function InstagramLogo() {
+export function InstagramLogo({ bare }: P) {
   return (
-    <Badge title="Instagram">
+    <Badge title="Instagram" bare={bare}>
       <rect x="17" y="17" width="30" height="30" rx="9" />
       <circle cx="32" cy="32.5" r="7" />
       <circle cx="40.5" cy="23.5" r="1.2" fill={INK} />
@@ -27,9 +29,9 @@ export function InstagramLogo() {
   );
 }
 
-export function EmailLogo() {
+export function EmailLogo({ bare }: P) {
   return (
-    <Badge title="Email">
+    <Badge title="Email" bare={bare}>
       <rect x="14" y="20" width="36" height="25" rx="4" />
       <path d="M15 22 L32 35 L49 22" />
       <path d="M32 40 c -2 -3 -6 -1 -4 2 l 4 4 l 4 -4 c 2 -3 -2 -5 -4 -2 Z" fill="#8fa98d" strokeWidth="1.5" />
@@ -37,9 +39,9 @@ export function EmailLogo() {
   );
 }
 
-export function GitHubLogo() {
+export function GitHubLogo({ bare }: P) {
   return (
-    <Badge title="GitHub">
+    <Badge title="GitHub" bare={bare}>
       {/* a cat with code for a mouth */}
       <path d="M18 44 C 15 34, 16 24, 19 15 L 26 22 C 30 21, 34 21, 38 22 L 45 15 C 48 24, 49 34, 46 44 C 40 50, 24 50, 18 44 Z" />
       <circle cx="26.5" cy="31" r="1.8" fill={INK} />
@@ -49,7 +51,7 @@ export function GitHubLogo() {
   );
 }
 
-export const logoFor: Record<string, () => React.ReactElement> = {
+export const logoFor: Record<string, (p: P) => React.ReactElement> = {
   Instagram: InstagramLogo,
   Email: EmailLogo,
   GitHub: GitHubLogo,

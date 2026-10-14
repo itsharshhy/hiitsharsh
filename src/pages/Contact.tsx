@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import Page from '../components/Page';
 import Avatar from '../components/Avatar';
 import Cat from '../components/cats/Cat';
@@ -10,6 +10,41 @@ import { socials } from '../content/socials';
 import '../styles/contact.css';
 
 const topics = ['a project', 'a collab', 'just saying hi', 'cats'];
+const prompts = ['say hi', 'ask me anything', 'pitch an idea', 'talk about cats', 'leave a note'];
+
+// A little olive tag where a pen keeps writing a new way to start a conversation.
+// Click it to jump down to the letter.
+function NoteTag() {
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setN((x) => (x + 1) % prompts.length), 2200);
+    return () => clearInterval(id);
+  }, []);
+  const word = prompts[n];
+  return (
+    <motion.a
+      href="#letter"
+      className="note-tag"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.9, duration: 0.5 }}
+      onClick={(e) => {
+        e.preventDefault();
+        document.getElementById('letter')?.scrollIntoView({ behavior: 'smooth' });
+      }}
+    >
+      <span className="note-tag__pen" aria-hidden="true">✎</span>
+      <span className="note-tag__text" aria-live="off">
+        <AnimatePresence mode="wait">
+          <motion.span key={word} initial={{ clipPath: 'inset(0 100% 0 0)' }} animate={{ clipPath: 'inset(0 0% 0 0)' }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.6, ease: 'easeOut' }}>
+            {word}
+          </motion.span>
+        </AnimatePresence>
+      </span>
+      <span className="sr-only">Write me a letter</span>
+    </motion.a>
+  );
+}
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -57,17 +92,14 @@ export default function Contact() {
         href={s.href}
         target={s.external ? '_blank' : undefined}
         rel="noreferrer"
-        className="band__tile"
-        initial={{ opacity: 0, y: 30 }}
+        className="band__icon"
+        aria-label={`${label}: ${s.value}`}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7 + i * 0.12, type: 'spring', stiffness: 160, damping: 16 }}
-        whileHover={{ y: -6, rotate: -2 }}
+        transition={{ delay: 0.7 + i * 0.12, duration: 0.5 }}
       >
-        <Logo />
-        <span>
-          <b>{label}</b>
-          <small>{s.value}</small>
-        </span>
+        <Logo bare />
+        <small>{label === 'Email' ? 'email' : s.value}</small>
       </motion.a>
     );
   };
@@ -95,20 +127,7 @@ export default function Contact() {
           <span className="band__fade band__fade--l" aria-hidden="true">SAY HI · SAY HI · SAY HI · SAY HI ·</span>
           <div className="band__tiles">
             <Tile label="Instagram" i={0} />
-            <motion.a
-              href="#letter"
-              className="band__cta"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.9, type: 'spring', stiffness: 200, damping: 14 }}
-              whileHover={{ scale: 1.05 }}
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('letter')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              WRITE TO ME ↓
-            </motion.a>
+            <NoteTag />
             <Tile label="Email" i={1} />
             <Tile label="GitHub" i={2} />
           </div>
