@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, MotionConfig } from 'framer-motion';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
@@ -12,6 +12,13 @@ import NotFound from './pages/NotFound';
 
 export default function App() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // GitHub Pages serves /about as /about/ — drop the trailing slash so routes and the nav match.
+  useEffect(() => {
+    const { pathname, search, hash } = location;
+    if (pathname.length > 1 && pathname.endsWith('/')) navigate(pathname.replace(/\/+$/, '') + search + hash, { replace: true });
+  }, [location, navigate]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
