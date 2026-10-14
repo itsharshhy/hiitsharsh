@@ -1,6 +1,6 @@
 # Harsh's Archive — Site Handbook
 
-Live at **https://itsharshhy.github.io/portfolio-/** (hosted free on GitHub Pages). Moves to your own domain once you buy one.
+Hosted free on GitHub Pages. Permanent address: **https://itsharshhy.github.io** once the repo is renamed (below); until then **https://itsharshhy.github.io/portfolio-/**.
 
 ## Three things to know
 
@@ -8,32 +8,26 @@ Live at **https://itsharshhy.github.io/portfolio-/** (hosted free on GitHub Page
 2. **The contact form emails you directly.** Letters go through FormSubmit to hiharshhyadav@gmail.com. It needs a one-time activation click.
 3. **Your content lives in `src/content/`.** Details, projects and the about story are plain text.
 
-## Custom domain
+## Your free address
 
-Domains checked on 14 Oct 2026 — available: itsmehy.com, itsmehy.in, hihy.in, itsharshhy.com, hiharshh.com, hiharsh.in, harshy.in. Taken: harshyadav.in, itsharsh.in, itsmeharsh.in.
+**https://itsharshhy.github.io** — your GitHub name, no `/portfolio-`, nothing to buy, no Vercel. GitHub gives every account one "user site"; the repo just needs that name.
 
-1. **Buy** the domain at any registrar (Cloudflare Registrar, Namecheap, Porkbun, GoDaddy). Skip hosting/email add-ons.
-2. **DNS records** at the registrar:
+1. **Rename the repo:** github.com/itsharshhy/portfolio- → Settings → General → Repository name → `itsharshhy.github.io` → Rename.
+2. **Rebuild:** Actions → *Deploy to GitHub Pages* → Run workflow (or ask Claude). The deploy sees the new name and builds for the root automatically.
+3. **Check** https://itsharshhy.github.io on a laptop and a phone. HTTPS is on by default.
 
-   | Type | Name | Value |
-   | --- | --- | --- |
-   | A | @ | 185.199.108.153 |
-   | A | @ | 185.199.109.153 |
-   | A | @ | 185.199.110.153 |
-   | A | @ | 185.199.111.153 |
-   | CNAME | www | itsharshhy.github.io |
+The old `itsharshhy.github.io/portfolio-/` address stops working after the rename; share only the new one.
 
-   Remove any other A/CNAME records on `@` or `www` (parked pages).
-3. **Add `public/CNAME`** containing just the domain (e.g. `itsmehy.com`) and push. The deploy sees it and builds for the domain root instead of `/portfolio-/`.
-4. **GitHub → Settings → Pages → Custom domain**, enter it, Save. When the DNS check is green, tick **Enforce HTTPS** (can take up to an hour).
-5. **Check** `https://yourdomain` and `https://www.yourdomain`. The github.io address redirects automatically.
+**Optional later**
+- Free: `yourname.is-a.dev` via a pull request to the volunteer project is-a.dev.
+- Paid (a few hundred to about a thousand rupees a year): a domain like `itsmehy.com` or `hihy.in` — add `public/CNAME` with the domain, point A records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` and a `www` CNAME to `itsharshhy.github.io`, then set it in Settings → Pages → Custom domain. The deploy handles the base path.
 
 ## Contact form
 
 - `/contact` posts letters to `https://formsubmit.co/ajax/hiharshhyadav@gmail.com`.
 - You receive: name, their email (set as reply-to, so **Reply** writes back to them), topic and message.
 - "It's done" only shows after FormSubmit confirms. On failure the letter stays and offers your email instead.
-- **Activation:** the first letter makes FormSubmit email you an *Activate Form* link. Click it once. After moving to a new domain, send a test letter again in case it asks to re-activate.
+- **Activation:** the first letter makes FormSubmit email you an *Activate Form* link. Click it once. After the repo rename, send a test letter from the new address in case it asks to re-activate.
 - **Spam:** a hidden `_honey` field drops bots. A captcha can be added if needed.
 
 ## Deploying
@@ -65,7 +59,7 @@ New project: copy a block in `projects.ts`, give it a new `slug`, and add `work/
 React 19 + TypeScript, Vite, React Router, Framer Motion, inline SVG illustrations, Fontsource fonts (Kumbh Sans, Instrument Serif, Instrument Sans, Patrick Hand, DM Mono), FormSubmit for email, GitHub Actions + Pages for hosting.
 
 ```
-public/            harsh.webp, work/ screenshots, favicon.svg, CNAME (once you have a domain)
+public/            harsh.webp, work/ screenshots, favicon.svg (+ CNAME if you add a domain)
 src/content/       site.ts, projects.ts, socials.ts
 src/pages/         Home, Projects, Work, About, Contact, NotFound
 src/components/    Avatar, Nav, Footer, Logos, cats/, collage/
@@ -83,17 +77,14 @@ Run locally: Node.js 22, then `npm install` and `npm run dev`.
 | Actions run is red | Open the run and read the failed step; old site stays up |
 | Contact says "the post office didn't pick that up" | Click the FormSubmit activation email; retry later |
 | No letters arriving | Check Spam/Promotions; mark "Not spam" |
-| Domain shows a parked page | Recheck the A records and `www` CNAME; wait up to 24 h |
-| Can't tick Enforce HTTPS | Wait up to an hour after the DNS check is green |
-| Unstyled page on the new domain | `public/CNAME` missing — add it and push |
+| itsharshhy.github.io shows 404 | Renamed but not rebuilt — Actions → Run workflow |
+| Page loads unstyled | Built for the old `/portfolio-/` address — run the deploy again |
 
 ## Launch checklist
 
 - [ ] Activate the contact form (FormSubmit email)
-- [ ] Buy the domain
-- [ ] Add the DNS records
-- [ ] Add `public/CNAME` and push
-- [ ] Set the custom domain in GitHub Pages, then Enforce HTTPS
-- [ ] Send a test letter from the new address
+- [ ] Rename the repo to `itsharshhy.github.io`
+- [ ] Rebuild (Run workflow, or ask Claude)
+- [ ] Send a test letter from https://itsharshhy.github.io/contact
 - [ ] Check every page on phone and laptop
-- [ ] Put the new link in your Instagram and GitHub bios
+- [ ] Put https://itsharshhy.github.io in your Instagram and GitHub bios
