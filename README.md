@@ -10,7 +10,7 @@ My portfolio, made to feel like a scrapbook on a desk: drag the stickers around,
 | `/work/:slug` | A case study per project: the gist, why it exists, how it's made, how it looks (palette + type), what's inside, what I learned. Each page takes on that project's own colours. |
 | `/work` | All three projects as a paper collage: cut-out lettering, taped screenshots, margin notes, cats. |
 | `/about` | "HI, I'M HARSH." in cut-out letters next to pixel-art me (blinks, glints, says hi), the longer story with the portrait sliced into paper strips, what I'm up to and a toolbox. |
-| `/contact` | A big portrait of pixel-art me with a strip of hand-drawn logo tiles (Instagram, Email, GitHub) across it, then a letter: "seal & send" fades it away, says it's done (replies might take a few days), and the contact cards slide up. |
+| `/contact` | A big portrait of pixel-art me with minimal hand-drawn icon links and a pen tag that writes conversation starters, then a letter form that emails me directly (via FormSubmit), fades away when sent, and confirms with "It's done". |
 
 ## How it's built
 
@@ -23,6 +23,10 @@ My portfolio, made to feel like a scrapbook on a desk: drag the stickers around,
 - **Cats**: small white Persians drawn in SVG (`src/components/cats`) that sit, loaf, peek and walk. Click one.
 - **GitHub Pages**: hosting. `.github/workflows/deploy.yml` builds and publishes on every push (Vercel also works via `vercel.json`).
 - **Palette**: Olive Green `#4D694E` and Beige Cream `#FFF3D5` (tokens at the top of `src/styles/global.css`).
+
+## Handbook
+
+Domain setup, the contact form, deploying, editing and troubleshooting: see [`docs/HANDBOOK.md`](docs/HANDBOOK.md).
 
 ## Editing
 
