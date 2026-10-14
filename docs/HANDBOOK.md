@@ -1,22 +1,19 @@
 # Harsh's Archive — Site Handbook
 
-Hosted free on GitHub Pages. Permanent address: **https://itsharshhy.github.io** once the repo is renamed (below); until then **https://itsharshhy.github.io/portfolio-/**.
+Hosted free on GitHub Pages at **https://itsharshhy.github.io/hiitsharsh/** (repo: `itsharshhy/hiitsharsh`).
 
 ## Three things to know
 
-1. **Every change goes through GitHub.** A push to `itsharshhy/portfolio-` builds and publishes the site in about a minute.
+1. **Every change goes through GitHub.** A push to `itsharshhy/hiitsharsh` builds and publishes the site in about a minute.
 2. **The contact form emails you directly.** Letters go through FormSubmit to hiharshhyadav@gmail.com. It needs a one-time activation click.
 3. **Your content lives in `src/content/`.** Details, projects and the about story are plain text.
 
-## Your free address
+## Your address
 
-**https://itsharshhy.github.io** — your GitHub name, no `/portfolio-`, nothing to buy, no Vercel. GitHub gives every account one "user site"; the repo just needs that name.
+**https://itsharshhy.github.io/hiitsharsh/** — free, no domain to buy, no Vercel. GitHub serves a repo at `itsharshhy.github.io/<repo name>/`, so the address follows the repo name.
 
-1. **Rename the repo:** github.com/itsharshhy/portfolio- → Settings → General → Repository name → `itsharshhy.github.io` → Rename.
-2. **Rebuild:** Actions → *Deploy to GitHub Pages* → Run workflow (or ask Claude). The deploy sees the new name and builds for the root automatically.
-3. **Check** https://itsharshhy.github.io on a laptop and a phone. HTTPS is on by default.
-
-The old `itsharshhy.github.io/portfolio-/` address stops working after the rename; share only the new one.
+- **Want it shorter, at https://itsharshhy.github.io with nothing after it?** Rename the repo to exactly `itsharshhy.github.io` (Settings → General → Repository name), then Actions → *Deploy to GitHub Pages* → Run workflow. The deploy detects the name and builds for the root by itself.
+- **Renamed it to something else?** Same thing: run the deploy once afterwards and the site moves to `itsharshhy.github.io/<new name>/`. The old address stops working, so update the links in your bios.
 
 **Optional later**
 - Free: `yourname.is-a.dev` via a pull request to the volunteer project is-a.dev.
@@ -77,14 +74,13 @@ Run locally: Node.js 22, then `npm install` and `npm run dev`.
 | Actions run is red | Open the run and read the failed step; old site stays up |
 | Contact says "the post office didn't pick that up" | Click the FormSubmit activation email; retry later |
 | No letters arriving | Check Spam/Promotions; mark "Not spam" |
-| itsharshhy.github.io shows 404 | Renamed but not rebuilt — Actions → Run workflow |
-| Page loads unstyled | Built for the old `/portfolio-/` address — run the deploy again |
+| Address shows 404 or a blank page after a rename | Not rebuilt yet — Actions → Run workflow |
+| Page loads unstyled | Built for the old address — run the deploy again |
 
 ## Launch checklist
 
 - [ ] Activate the contact form (FormSubmit email)
-- [ ] Rename the repo to `itsharshhy.github.io`
-- [ ] Rebuild (Run workflow, or ask Claude)
-- [ ] Send a test letter from https://itsharshhy.github.io/contact
+- [x] Rename the repo (`hiitsharsh`) and rebuild
+- [ ] Send a test letter from https://itsharshhy.github.io/hiitsharsh/contact
 - [ ] Check every page on phone and laptop
-- [ ] Put https://itsharshhy.github.io in your Instagram and GitHub bios
+- [ ] Put https://itsharshhy.github.io/hiitsharsh/ in your Instagram and GitHub bios
