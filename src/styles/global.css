@@ -1263,9 +1263,9 @@ h3 {
 .letter {
   position: relative;
   z-index: 2;
-  margin: 0 5% 70px;
+  margin: 0 5% 20px;
   background: #fffdf7;
-  padding: 34px 34px 40px;
+  padding: 34px 34px 150px;
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
   background-image: repeating-linear-gradient(transparent 0 33px, #dfe9f5 33px 34px);
   display: grid;
