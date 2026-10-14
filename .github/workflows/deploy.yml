@@ -24,11 +24,18 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      # With a custom domain (public/CNAME) the site lives at the root, e.g. https://itsmehy.com/.
-      # Without one it lives at https://itsharshhy.github.io/portfolio-/.
+      # The site lives at the root of its address when the repo is the user site
+      # (itsharshhy.github.io) or has a custom domain (public/CNAME); otherwise it
+      # lives under the repo name, e.g. https://itsharshhy.github.io/portfolio-/.
       - name: Pick the base path
         run: |
-          if [ -s public/CNAME ]; then echo "BASE_PATH=/" >> "$GITHUB_ENV"; else echo "BASE_PATH=/portfolio-/" >> "$GITHUB_ENV"; fi
+          name="${GITHUB_REPOSITORY#*/}"
+          owner="${GITHUB_REPOSITORY%%/*}"
+          if [ "$name" = "$owner.github.io" ] || [ -s public/CNAME ]; then
+            echo "BASE_PATH=/" >> "$GITHUB_ENV"
+          else
+            echo "BASE_PATH=/$name/" >> "$GITHUB_ENV"
+          fi
       - run: npm run build
       # GitHub Pages has no rewrites: give every page its own index.html so deep links
       # (like /about) load with a normal 200, and keep 404.html as a fallback for anything else.
