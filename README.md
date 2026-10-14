@@ -10,7 +10,7 @@ My portfolio, made to feel like a scrapbook on a desk: drag the stickers around,
 | `/work/:slug` | A case study per project: the gist, why it exists, how it's made, how it looks (palette + type), what's inside, what I learned. Each page takes on that project's own colours. |
 | `/work` | All three projects as a paper collage: cut-out lettering, taped screenshots, margin notes, cats. |
 | `/about` | "HI, I'M HARSH." in cut-out letters next to pixel-art me (blinks, glints, says hi), the longer story with the portrait sliced into paper strips, what I'm up to and a toolbox. |
-| `/contact` | A letter on a writing desk. Hit "seal & send" and it folds into the envelope, gets a wax seal, and a little bird flies off with it; then your email app opens with the letter ready. Socials are postage stamps. |
+| `/contact` | A big portrait of pixel-art me with a strip of hand-drawn logo tiles (Instagram, Email, GitHub) across it, then a letter: "seal & send" fades it away, says it's done (replies might take a few days), and the contact cards slide up. |
 
 ## How it's built
 

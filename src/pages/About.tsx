@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Page from '../components/Page';
 import Avatar from '../components/Avatar';
+import Rich from '../components/Rich';
 import Cat from '../components/cats/Cat';
 import { Arrow, InkFlower, Kinetic, Note, Scribble, Torn } from '../components/collage/Bits';
 import { asset } from '../content/asset';
@@ -119,17 +120,33 @@ export default function About() {
           </div>
 
           <div className="ab-story__text">
-            <h2>I build things that feel like a deep breath.</h2>
-            {site.about.story.map((p, i) => (
-              <motion.p key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                {p}
-              </motion.p>
-            ))}
-            <p className="ab-story__circled">
-              <Scribble>
-                This is my <strong>whole thing.</strong>
-              </Scribble>
-            </p>
+            <h2>
+              Hi, I'm <Scribble>{site.firstName}.</Scribble>
+            </h2>
+            {site.about.story.map((p, i) =>
+              p.startsWith('> ') ? (
+                <motion.blockquote
+                  key={i}
+                  className="ab-pull"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Rich text={p.slice(2)} />
+                </motion.blockquote>
+              ) : (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Rich text={p} />
+                </motion.p>
+              ),
+            )}
           </div>
         </div>
       </section>

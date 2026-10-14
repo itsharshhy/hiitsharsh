@@ -168,9 +168,15 @@
   max-width: 1150px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1.25fr;
   gap: clamp(50px, 8vw, 120px);
-  align-items: center;
+  align-items: start;
+}
+/* the sliced portrait stays put while the story scrolls past */
+.ab-story__grid .sliced {
+  position: sticky;
+  top: 140px;
+  margin-top: 60px;
 }
 .sliced {
   position: relative;
@@ -219,10 +225,40 @@
   color: var(--navy);
 }
 .ab-story__text p {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
+  line-height: 1.7;
   color: var(--navy);
-  margin: 0 0 1em;
-  max-width: 540px;
+  margin: 0 0 1.15em;
+  max-width: 600px;
+}
+.ab-story__text em {
+  font-family: var(--serif);
+  font-size: 1.2em;
+}
+.rich-link {
+  color: inherit;
+  text-decoration: underline wavy var(--olive-soft);
+  text-underline-offset: 5px;
+}
+.ab-pull {
+  margin: 1.6em 0 1.6em -4px;
+  padding-left: 22px;
+  border-left: 4px solid var(--olive-soft);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  line-height: 1.25;
+  color: var(--navy);
+  max-width: 600px;
+}
+.ab-pull:last-child {
+  border-left: 0;
+  padding: 26px 30px;
+  margin-top: 2em;
+  background: var(--olive);
+  color: var(--beige);
+  rotate: -1deg;
+  box-shadow: 0 18px 30px -18px rgba(43, 58, 44, 0.6);
 }
 .ab-story__circled {
   margin-top: 30px !important;
@@ -231,6 +267,10 @@
 @media (max-width: 860px) {
   .ab-story__grid {
     grid-template-columns: 1fr;
+  }
+  .ab-story__grid .sliced {
+    position: relative;
+    top: 0;
   }
   .sliced {
     width: min(74%, 340px);
