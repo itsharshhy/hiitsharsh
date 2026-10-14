@@ -21,11 +21,15 @@ Hosted free on GitHub Pages at **https://itsharshhy.github.io/hiitsharsh/** (rep
 
 ## Contact form
 
-- `/contact` posts letters to `https://formsubmit.co/ajax/hiharshhyadav@gmail.com`.
-- You receive: name, their email (set as reply-to, so **Reply** writes back to them), topic and message.
-- "It's done" only shows after FormSubmit confirms. On failure the letter stays and offers your email instead.
-- **Activation:** the first letter makes FormSubmit email you an *Activate Form* link. Click it once. After the repo rename, send a test letter from the new address in case it asks to re-activate.
-- **Spam:** a hidden `_honey` field drops bots. A captcha can be added if needed.
+Letters on `/contact` are emailed straight to hiharshhyadav@gmail.com. Two services are wired in:
+
+- **Web3Forms (main):** used whenever `formKey` in `src/content/site.ts` holds your access key.
+  1. Go to **web3forms.com**, type `hiharshhyadav@gmail.com` under *Create your Access Key*, submit.
+  2. The key (looks like `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`) arrives in your inbox right away — no activation link.
+  3. Paste it into `formKey: '...'` (or send it to Claude). It is safe to be public: it can only send to your inbox.
+- **FormSubmit (backup):** used while `formKey` is empty. Needs a one-time *Activate Form* click from its email.
+
+You receive the visitor's name, email (set as reply-to, so **Reply** answers them), topic and message. "It's done" only shows after delivery is confirmed; otherwise the letter stays and offers your email address. A hidden `botcheck`/`_honey` field drops spam bots.
 
 ## Deploying
 

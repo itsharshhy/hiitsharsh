@@ -59,28 +59,46 @@ export default function Contact() {
   const byLabel = Object.fromEntries(links.map((s) => [s.label, s]));
 
   // The letter fades away; once it's gone the visitor's own email app opens with it written in.
-  // Letters go through FormSubmit (formsubmit.co), which emails them straight to site.email.
-  // No server of our own and no email app needed on the visitor's side.
+  // Letters are emailed straight to site.email by Web3Forms (when site.formKey is set)
+  // or FormSubmit. No server of our own and no email app needed on the visitor's side.
+  const viaWeb3Forms = async (subject: string) => {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: site.formKey,
+        subject,
+        from_name: "Harsh's Archive",
+        name,
+        email: from,
+        replyto: from,
+        topic,
+        message: msg,
+        botcheck: honey,
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return res.ok && data.success === true;
+  };
+
+  const viaFormSubmit = async (subject: string) => {
+    const res = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ name, email: from, topic, message: msg, _subject: subject, _template: 'box', _honey: honey }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return res.ok && String(data.success) === 'true';
+  };
+
   const send = async (e: FormEvent) => {
     e.preventDefault();
     if (status === 'sending') return;
     setStatus('sending');
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name,
-          email: from,
-          topic,
-          message: msg,
-          _subject: `New letter from ${name || 'a visitor'} (re: ${topic})`,
-          _template: 'box',
-          _honey: honey,
-        }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'not sent');
+      const subject = `New letter from ${name || 'a visitor'} (re: ${topic})`;
+      const ok = site.formKey ? await viaWeb3Forms(subject) : await viaFormSubmit(subject);
+      if (!ok) throw new Error('not sent');
       setSent(true);
       setStatus('idle');
     } catch {
