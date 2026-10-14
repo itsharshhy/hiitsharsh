@@ -19,7 +19,7 @@ export const site = {
   // Contact form delivery. Paste your Web3Forms access key here (free, from web3forms.com).
   // It's safe to be public: it can only send letters to your own inbox.
   // Leave it empty to fall back to FormSubmit.
-  formKey: '',
+  formKey: 'e96ebdb9-7bcd-497d-a00b-4d68c3e7a0a0',
 
   about: {
     // Short line in the pink blob on the About poster.
