@@ -1,0 +1,81 @@
+/* Shared collage pieces: notes, torn edges, scribbles, kinetic type. */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.kinetic {
+  display: block;
+  margin: 0;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+.kinetic__l {
+  display: inline-block;
+  cursor: default;
+}
+.kinetic__w {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 0.24em;
+}
+.kinetic__w:last-child {
+  margin-right: 0;
+}
+
+.note {
+  position: absolute;
+  z-index: 4;
+  display: inline-block;
+  font: 1.25rem/1.25 var(--hand);
+  padding: 10px 16px 8px;
+  color: var(--ink);
+  box-shadow: 0 8px 14px -8px rgba(0, 0, 0, 0.4);
+  max-width: 240px;
+}
+.note::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 60px;
+  height: 18px;
+  translate: -50% 0;
+  background: rgba(255, 255, 255, 0.55);
+  rotate: -4deg;
+}
+.note--paper { background: #fffdf6; }
+.note--yellow { background: #fff1a8; }
+.note--blue { background: #cfdcff; }
+.note--kraft { background: #dfc697; }
+/* ----- torn edges ----- */
+.torn {
+  display: block;
+  width: 100%;
+}
+.torn--top {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  margin-bottom: -1px;
+}
+
+.scribble-wrap {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+.scribble-wrap svg {
+  position: absolute;
+  inset: -22% -10% -28% -8%;
+  width: 118%;
+  height: 150%;
+  pointer-events: none;
+  overflow: visible;
+}

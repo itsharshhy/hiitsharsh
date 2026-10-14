@@ -3,6 +3,7 @@ import { useState, type FormEvent } from 'react';
 import Page from '../components/Page';
 import { site } from '../content/site';
 import { socials } from '../content/socials';
+import Cat from '../components/cats/Cat';
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -68,6 +69,7 @@ export default function Contact() {
             )}
           </motion.form>
           <div className="mail__front" aria-hidden="true" />
+          <Cat pose="sit" eyes="blue" className="mail__cat" />
         </div>
 
         <aside className="stamps" aria-label="Other ways to reach me">
@@ -94,6 +96,7 @@ export default function Contact() {
             </button>
           )}
           <p className="stamps__where">📍 {site.location}</p>
+          <Cat pose="loaf" className="stamps__cat" />
         </aside>
       </div>
     </Page>

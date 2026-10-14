@@ -1,147 +1,92 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { eyes, grid, palette } from '../content/avatar';
+import { useEffect, useId, useState } from 'react';
+import { asset } from '../content/asset';
 
-// Pixel-art me. Drawn from a letter grid (content/avatar.ts), merged into runs so it's
-// a few hundred SVG rects instead of a thousand. It bobs to the music in its headphones,
-// blinks, looks toward your cursor, its glasses glint, and poking it makes it say hi.
+// Pixel-art me (public/harsh.webp, background removed), with life added on top in SVG:
+// a one-pixel bob, blinks, a glint across the glasses, and a "hi!" when poked.
+// Coordinates are in the image's own pixels (609 x 696).
 
-type Run = { x: number; y: number; w: number; c: string };
+const SKIN = '#fde3d2';
+const INK = '#07080a';
+const lenses = [
+  { x: 182, w: 80, lid: [195, 250] },
+  { x: 340, w: 88, lid: [355, 415] },
+];
 
-function toRuns(rows: string[]): Run[] {
-  const runs: Run[] = [];
-  rows.forEach((row, y) => {
-    let x = 0;
-    while (x < row.length) {
-      const ch = row[x];
-      let w = 1;
-      while (row[x + w] === ch) w++;
-      if (palette[ch]) runs.push({ x, y, w, c: palette[ch] });
-      x += w;
-    }
-  });
-  return runs;
-}
-
-// A tiny pixel music note: [x, y] cells.
-const NOTE = [[2, 0], [3, 0], [2, 1], [4, 1], [2, 2], [2, 3], [0, 4], [1, 4], [2, 4], [0, 5], [1, 5]];
-
-function Note({ x, y, delay, color }: { x: number; y: number; delay: number; color: string }) {
-  return (
-    <motion.g
-      initial={{ opacity: 0, x, y }}
-      animate={{ opacity: [0, 1, 1, 0], y: [y, y - 4, y - 8, y - 11], x: [x, x - 1, x + 1, x] }}
-      transition={{ duration: 2.6, repeat: Infinity, delay, ease: 'linear', times: [0, 0.2, 0.7, 1] }}
-    >
-      {NOTE.map(([nx, ny]) => (
-        <rect key={`${nx}-${ny}`} x={nx * 0.5} y={ny * 0.5} width={0.5} height={0.5} fill={color} />
-      ))}
-    </motion.g>
-  );
-}
-
-export default function Avatar({ size = 'big' }: { size?: 'big' | 'small' }) {
-  const ref = useRef<SVGSVGElement>(null);
-  const runs = useMemo(() => toRuns(grid), []);
-  const [look, setLook] = useState({ dx: 0, up: false });
+export default function Avatar({ size = 'big', className = '' }: { size?: 'big' | 'small'; className?: string }) {
   const [blink, setBlink] = useState(false);
   const [hi, setHi] = useState(false);
+  const clip = useId();
 
-  // Pupils slide one pixel toward the pointer.
-  useEffect(() => {
-    const move = (e: PointerEvent) => {
-      const box = ref.current?.getBoundingClientRect();
-      if (!box) return;
-      const dx = e.clientX - (box.left + box.width / 2);
-      const dy = e.clientY - (box.top + box.height * 0.45);
-      setLook({ dx: dx < -60 ? -1 : dx > 60 ? 1 : 0, up: dy < -80 });
-    };
-    window.addEventListener('pointermove', move);
-    return () => window.removeEventListener('pointermove', move);
-  }, []);
-
-  // Blink at slightly random intervals.
   useEffect(() => {
     let t: ReturnType<typeof setTimeout>;
     const loop = () => {
       t = setTimeout(() => {
         setBlink(true);
-        setTimeout(() => setBlink(false), 150);
+        setTimeout(() => setBlink(false), 160);
         loop();
-      }, 2000 + Math.random() * 3000);
+      }, 2200 + Math.random() * 3200);
     };
     loop();
     return () => clearTimeout(t);
   }, []);
 
-  const sayHi = () => {
+  const poke = () => {
     setHi(true);
-    setTimeout(() => setHi(false), 1800);
+    setTimeout(() => setHi(false), 1600);
   };
-
-  const [top, bottom] = eyes.rows;
-  const skin = palette.S;
-  const dark = palette.G;
 
   return (
     <svg
-      ref={ref}
-      viewBox="-2 -6 36 40"
-      className={`avatar avatar--${size}`}
+      viewBox="-20 -90 649 806"
+      className={`avatar avatar--${size} ${className}`}
       role="img"
-      aria-label="A pixel-art version of Harsh: messy black hair, round glasses, headphones and a purple hoodie"
-      shapeRendering="crispEdges"
-      onPointerEnter={sayHi}
-      onClick={sayHi}
+      aria-label="Harsh as pixel art: messy black hair, round glasses, black hoodie"
+      onClick={poke}
+      onPointerEnter={poke}
     >
+      <defs>
+        <clipPath id={clip}>
+          {lenses.map((l) => (
+            <rect key={l.x} x={l.x} y={286} width={l.w} height={52} />
+          ))}
+        </clipPath>
+      </defs>
       <g className="avatar__bob">
-        {runs.map((r, i) => (
-          <rect key={i} x={r.x} y={r.y} width={r.w} height={1} fill={r.c} />
-        ))}
-
-        {/* eyes */}
-        {eyes.cols.map((c) =>
-          blink ? (
-            <g key={c}>
-              <rect x={c} y={top} width={eyes.width} height={1} fill={skin} />
-              <rect x={c} y={bottom} width={eyes.width} height={1} fill={dark} />
+        <image href={asset('harsh.webp')} width="609" height="696" style={{ imageRendering: 'pixelated' }} />
+        {blink &&
+          lenses.map((l) => (
+            <g key={l.x}>
+              <rect x={l.x} y={296} width={l.w} height={38} fill={SKIN} />
+              <rect x={l.lid[0]} y={316} width={l.lid[1] - l.lid[0]} height={10} fill={INK} />
             </g>
-          ) : (
-            <rect key={c} x={c + 1 + look.dx} y={look.up ? top : bottom} width={2} height={1} fill={dark} />
-          ),
-        )}
-
-        {/* glasses glint */}
-        {eyes.cols.map((c, i) => (
+          ))}
+        <g clipPath={`url(#${clip})`}>
           <motion.rect
-            key={`glint-${c}`}
-            y={top}
-            width={1}
-            height={1}
+            y={270}
+            width={18}
+            height={90}
             fill="#fff"
-            initial={{ x: c, opacity: 0 }}
-            animate={{ x: [c, c + eyes.width - 1], opacity: [0, 0.9, 0] }}
-            transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 4, delay: 1 + i * 0.15 }}
+            opacity={0.75}
+            transform="skewX(-25)"
+            initial={{ x: 120 }}
+            animate={{ x: [120, 560] }}
+            transition={{ duration: 0.9, repeat: Infinity, repeatDelay: 3.5, ease: 'easeInOut' }}
           />
-        ))}
+        </g>
       </g>
-
-      {/* music leaking out of the headphones */}
-      <Note x={1} y={22} delay={0} color="#f5b8d0" />
-      <Note x={27} y={22} delay={1.3} color="#f3dc8a" />
-
       <AnimatePresence>
         {hi && (
           <motion.g
-            initial={{ opacity: 0, scale: 0.4 }}
+            initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            style={{ originX: '26px', originY: '0px' }}
+            style={{ transformOrigin: '500px 0px', transformBox: 'view-box' } as React.CSSProperties}
           >
-            <rect x={23} y={-5} width={10} height={6} fill="#fff" />
-            <rect x={22} y={-4} width={12} height={4} fill="#fff" />
-            <rect x={24} y={1} width={2} height={1} fill="#fff" />
-            <text x={28} y={-1.4} textAnchor="middle" fontSize="4" fontFamily="'DM Mono', monospace" fontWeight="500" fill={dark}>
+            <rect x={430} y={-80} width={170} height={96} fill="#fff" stroke={INK} strokeWidth="8" />
+            <rect x={450} y={12} width={30} height={30} fill="#fff" stroke={INK} strokeWidth="8" />
+            <rect x={446} y={8} width={38} height={10} fill="#fff" />
+            <text x={515} y={-12} textAnchor="middle" fontSize="64" fontFamily="'DM Mono', monospace" fontWeight="500" fill={INK}>
               hi!
             </text>
           </motion.g>

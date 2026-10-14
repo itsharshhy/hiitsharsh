@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
 import Page from '../components/Page';
 import Polaroid from '../components/Polaroid';
+import Cat from '../components/cats/Cat';
 import NotFound from './NotFound';
 import { projectBySlug, projects } from '../content/projects';
 import { site } from '../content/site';
@@ -142,6 +143,7 @@ export default function Work() {
           <p className="handnote">{p.learned}</p>
         </motion.section>
 
+        <Cat pose="peek" eyes={p.cat.eyes} className="next__cat" />
         <Link to={`/work/${next.slug}`} className="next">
           <span className="next__label">next up →</span>
           <span className="next__title">{next.title}</span>

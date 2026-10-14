@@ -1,3 +1,5 @@
+import { asset } from './asset';
+
 export type Swatch = { name: string; hex: string };
 export type Shot = { src: string; alt: string; kind: 'desktop' | 'phone' | 'board' };
 
@@ -12,7 +14,9 @@ export type Project = {
   links: { label: string; href: string }[];
   theme: { paper: string; ink: string; accent: string; wash: string };
   sticker: string; // short handwritten note on the polaroid
-  status: string; // rubber stamp on the projects page
+  status: string; // circled on the projects page
+  notes: [string, string]; // handwritten margin notes
+  cat: { pose: 'sit' | 'loaf' | 'peek'; eyes: 'copper' | 'blue' | 'green' };
   gist: string[];
   why: string;
   stack: { name: string; note: string }[];
@@ -38,6 +42,8 @@ export const projects: Project[] = [
     theme: { paper: '#eef5e6', ink: '#24352a', accent: '#6b8f5a', wash: '#cfe6f1' },
     sticker: 'hop · plant · grow',
     status: 'live',
+    notes: ['same question for everyone, every day', 'no timers. no losing.'],
+    cat: { pose: 'peek', eyes: 'green' },
     gist: [
       'You hop from island to island. Every few islands the game asks you a question, and whatever you write grows into a flower in your garden.',
       'Play a calm walk with no timers and no losing, answer the same question as everyone else today, climb crumbling islands, or open a live room with a friend using a code like MOSS-4821.',
@@ -79,8 +85,8 @@ export const projects: Project[] = [
       'Private on-device journal you can export or delete',
     ],
     shots: [
-      { src: '/work/plant-a-thought-desktop.webp', alt: 'Plant a Thought home screen on a laptop, with today’s question and play modes', kind: 'desktop' },
-      { src: '/work/plant-a-thought-phone.webp', alt: 'Plant a Thought on a phone', kind: 'phone' },
+      { src: asset('/work/plant-a-thought-desktop.webp'), alt: 'Plant a Thought home screen on a laptop, with today’s question and play modes', kind: 'desktop' },
+      { src: asset('/work/plant-a-thought-phone.webp'), alt: 'Plant a Thought on a phone', kind: 'phone' },
     ],
     learned: 'Making something gentle takes a lot of rules. The calmest parts of this game are backed by the strictest code: database permissions, length limits on everything another player sends, and tests that check islands fit a 320px phone.',
   },
@@ -98,6 +104,8 @@ export const projects: Project[] = [
     theme: { paper: '#f5efe6', ink: '#2c332e', accent: '#4e6a57', wash: '#e3eadf' },
     sticker: 'did it happen?',
     status: 'in testing',
+    notes: ['no red. no streaks. ever.', 'works 100% offline'],
+    cat: { pose: 'loaf', eyes: 'copper' },
     gist: [
       'You write a worry in one line and pick a day to look back. On that day Pebble asks one gentle question: did it happen?',
       'Over time you build a quiet, personal record of how often your mind’s forecasts came true. It runs on Windows, macOS and Linux.',
@@ -136,7 +144,7 @@ export const projects: Project[] = [
       'Free and open source under MIT',
     ],
     shots: [
-      { src: '/work/pebble-screens.webp', alt: 'Pebble design board showing the Today, Breath pause and Check-back screens', kind: 'board' },
+      { src: asset('/work/pebble-screens.webp'), alt: 'Pebble design board showing the Today, Breath pause and Check-back screens', kind: 'board' },
     ],
     learned: 'Writing the rules down first (what the app must never do) made every design decision faster. When a feature idea came up, the Calm Audit had usually already answered it.',
   },
@@ -155,6 +163,8 @@ export const projects: Project[] = [
     theme: { paper: '#f5f3ef', ink: '#171514', accent: '#9e776b', wash: '#ebe3dc' },
     sticker: 'seven ways to feel wonderful',
     status: 'pitched',
+    notes: ['one tap → WhatsApp booking', 'b&w photos bloom into colour'],
+    cat: { pose: 'sit', eyes: 'blue' },
     gist: [
       '7 Wonders Studio is a hair, skin and grooming salon on one of Mumbai’s most competitive salon streets. It had Instagram and listing sites, but no website of its own.',
       'We designed the site, wrote a full product brief and a pitch guide, and deployed a live demo so the owner could open it on their own phone.',
@@ -194,8 +204,8 @@ export const projects: Project[] = [
       'Respects reduced-motion settings',
     ],
     shots: [
-      { src: '/work/seven-wonders-desktop.webp', alt: '7 Wonders Studio homepage: “Seven ways to feel wonderful.” beside a black and white portrait', kind: 'desktop' },
-      { src: '/work/seven-wonders-phone.webp', alt: '7 Wonders Studio on a phone', kind: 'phone' },
+      { src: asset('/work/seven-wonders-desktop.webp'), alt: '7 Wonders Studio homepage: “Seven ways to feel wonderful.” beside a black and white portrait', kind: 'desktop' },
+      { src: asset('/work/seven-wonders-phone.webp'), alt: '7 Wonders Studio on a phone', kind: 'phone' },
     ],
     learned: 'A pitch is a design problem too. Deciding what the owner should feel in the first five seconds on their own phone shaped the site more than any style guide.',
   },

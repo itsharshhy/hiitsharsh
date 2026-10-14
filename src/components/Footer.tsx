@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { site } from '../content/site';
 import { socials } from '../content/socials';
+import WalkingCat from './cats/WalkingCat';
 
 export default function Footer() {
   return (
     <footer className="footer">
+      <WalkingCat className="footer__cats" />
       <p className="footer__big">
         Made by hand, with glue sticks and TypeScript.
       </p>

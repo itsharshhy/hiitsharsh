@@ -1,0 +1,289 @@
+/* Projects: a cobalt cover, then one torn sheet of paper per project. */
+
+.projects {
+  background: var(--cobalt);
+  overflow: hidden;
+}
+
+/* ----- hero ----- */
+.pj-hero {
+  position: relative;
+  min-height: max(680px, 100svh);
+  padding: 110px var(--gutter) 140px;
+  color: var(--cream);
+}
+.pj-hero__words {
+  position: relative;
+  z-index: 2;
+  max-width: 1300px;
+  margin: 0 auto;
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 0.8;
+}
+.pj-hero__l1 {
+  display: block;
+  font-size: clamp(4.6rem, 17vw, 16rem);
+  letter-spacing: 0.02em;
+}
+.pj-hero__l2 {
+  display: block;
+  font-size: clamp(3.2rem, 12vw, 11rem);
+  text-align: right;
+  color: var(--mustard);
+  margin-top: 0.12em;
+}
+.pj-cut {
+  position: absolute;
+  z-index: 3;
+}
+.pj-cut a {
+  display: block;
+  background: #fffdf8;
+  padding: 8px 8px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  box-shadow: 0 24px 34px -16px rgba(0, 0, 0, 0.55);
+}
+.pj-cut img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+}
+.pj-cut span {
+  display: block;
+  font: 1.15rem var(--hand);
+  text-align: center;
+  padding-top: 6px;
+}
+.pj-hero__n1 { top: 24%; right: 8%; }
+.pj-hero__n2 { top: 47%; left: 5%; }
+.pj-hero__scrap {
+  position: absolute;
+  z-index: 1;
+  width: clamp(120px, 18vw, 240px);
+  height: clamp(60px, 7vw, 90px);
+  left: 30%;
+  top: 22%;
+  background: var(--tomato);
+  rotate: -6deg;
+  clip-path: polygon(0 10%, 12% 0, 40% 8%, 70% 0, 100% 6%, 96% 50%, 100% 92%, 70% 100%, 35% 92%, 6% 100%, 2% 50%);
+}
+.pj-hero__cat {
+  position: absolute;
+  z-index: 4;
+  width: clamp(70px, 8vw, 110px);
+  right: 22%;
+  top: calc(110px + clamp(4.6rem, 17vw, 16rem) * 0.8 - clamp(70px, 8vw, 110px) * 0.98);
+}
+.pj-hero__peek {
+  position: absolute;
+  z-index: 4;
+  width: 110px;
+  left: 4%;
+  bottom: 62px;
+}
+.pj-hero__marquee {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: 24px;
+  rotate: -1.5deg;
+  z-index: 5;
+}
+@media (max-width: 760px) {
+  .pj-hero {
+    min-height: 0;
+    padding-bottom: 560px;
+  }
+  .pj-cut { width: 46vw !important; }
+  .pj-cut--0 { left: 4% !important; top: auto !important; bottom: 300px; }
+  .pj-cut--1 { left: 50% !important; top: auto !important; bottom: 340px; }
+  .pj-cut--2 { left: 26% !important; top: auto !important; bottom: 120px; }
+  .pj-hero__n1 { top: auto; bottom: 490px; right: 4%; }
+  .pj-hero__n2 { top: auto; bottom: 76px; left: 4%; }
+  .pj-hero__scrap { top: 120px; left: 50%; }
+  .pj-hero__cat { right: auto; left: 6%; top: auto; bottom: 470px; }
+  .pj-hero__peek { display: none; }
+}
+
+/* ----- marquee tape ----- */
+.marquee {
+  overflow: hidden;
+  background: var(--mustard);
+  color: var(--navy);
+  font: 800 clamp(1rem, 2vw, 1.4rem) var(--display);
+  letter-spacing: 0.04em;
+  padding: 10px 0 8px;
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee__track > span {
+  white-space: nowrap;
+  padding-right: 0.5em;
+}
+.marquee b {
+  color: var(--tomato);
+  margin: 0 0.4em;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+/* ----- one project ----- */
+.pj {
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 90px var(--gutter) 130px;
+}
+.pj__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: center;
+}
+.pj--flip .pj__collage {
+  order: -1;
+}
+.pj__num {
+  font: 800 clamp(4rem, 9vw, 7rem) / 0.8 var(--display);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+  margin: 0;
+}
+.pj__title {
+  display: block;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2.8rem, 6.2vw, 5.4rem);
+  line-height: 0.88;
+  margin: 10px 0 16px;
+  color: var(--ink);
+}
+.pj__meta {
+  font: 0.9rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin: 0 0 18px;
+}
+.pj__meta .scribble-wrap {
+  padding: 0 4px;
+  color: var(--tomato);
+}
+.pj__one {
+  font-size: 1.12rem;
+  margin: 0 0 24px;
+  max-width: 520px;
+}
+.pj .dymo {
+  margin-bottom: 30px;
+}
+.pj__ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.pj__collage {
+  position: relative;
+  padding: 40px 30px 60px;
+}
+.pj__scrap {
+  position: absolute;
+  inset: 8% 4% 14% 8%;
+  background: var(--accent);
+  opacity: 0.9;
+  clip-path: polygon(2% 4%, 20% 0, 50% 5%, 80% 0, 100% 6%, 97% 40%, 100% 80%, 96% 100%, 60% 95%, 25% 100%, 0 96%, 3% 55%);
+}
+.pj__shot {
+  position: relative;
+  margin: 0;
+  background: #fffdf8;
+  padding: 10px;
+  box-shadow: 0 30px 40px -22px rgba(0, 0, 0, 0.55);
+}
+.pj__shot img {
+  width: 100%;
+  aspect-ratio: 16 / 10.5;
+  object-fit: cover;
+  object-position: top;
+}
+.pj__phone {
+  position: absolute;
+  margin: 0;
+  width: 30%;
+  right: -2%;
+  bottom: 8%;
+  border: 7px solid #1b1a19;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 24px 30px -16px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+.pj__phone img {
+  width: 100%;
+  aspect-ratio: 9 / 18;
+  object-fit: cover;
+  object-position: top;
+}
+.pj__n1 { top: -4%; left: -4%; }
+.pj__n2 { bottom: -2%; left: 18%; }
+.pj__arrow {
+  position: absolute;
+  width: 70px;
+  top: 10%;
+  left: 30%;
+  z-index: 3;
+}
+.pj__cat {
+  position: absolute;
+  z-index: 4;
+}
+.pj__cat--sit { width: 96px; right: 4%; top: -46px; }
+.pj__cat--loaf { width: 130px; right: 6%; top: -30px; }
+.pj__cat--peek { width: 110px; left: 40%; bottom: -10px; }
+
+@media (max-width: 860px) {
+  .pj__inner {
+    grid-template-columns: 1fr;
+  }
+  .pj--flip .pj__collage {
+    order: 0;
+  }
+  .pj__collage {
+    padding: 50px 10px 70px;
+  }
+  .pj__n1 { left: 0; }
+  .note {
+    font-size: 1.05rem;
+    max-width: 200px;
+  }
+}
+
+.pj-end {
+  position: relative;
+  background: var(--night);
+  color: var(--cream);
+  text-align: center;
+  padding: 80px var(--gutter) 100px;
+}
+.pj-end__line {
+  font: 800 clamp(2rem, 5vw, 3.6rem) / 1 var(--display);
+  margin: 0 0 30px;
+}

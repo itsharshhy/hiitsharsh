@@ -8,6 +8,7 @@ import {
 } from '../components/collage/Items';
 import Polaroid from '../components/Polaroid';
 import Avatar from '../components/Avatar';
+import Cat from '../components/cats/Cat';
 import { useMedia } from '../hooks/useMedia';
 import { projects } from '../content/projects';
 import { site } from '../content/site';
@@ -27,6 +28,8 @@ const items: Item[] = [
   { id: 'dish', d: { x: 7, y: 60, w: 20, r: -8 }, m: { x: 2, y: 56, w: 46, r: -8 }, label: 'Pebble →', to: '/work/pebble', el: <PebbleDish /> },
   { id: 'tickets', d: { x: 27, y: 62, w: 21, r: -4 }, m: { x: 3, y: 71, w: 52, r: -6 }, label: '7 Wonders →', to: '/work/seven-wonders-studio', el: <Tickets /> },
   { id: 'cherries', d: { x: 49, y: 62, w: 8, r: -6 }, m: { x: 40, y: 64, w: 14, r: 0 }, el: <Cherries /> },
+  { id: 'cat-loaf', d: { x: 41, y: 30, w: 9, r: 0 }, m: { x: 30, y: 49, w: 26, r: 0 }, el: <Cat pose="loaf" /> },
+  { id: 'cat-sit', d: { x: 88, y: 46, w: 6, r: 0 }, m: { x: 80, y: 68, w: 16, r: 0 }, el: <Cat pose="sit" eyes="blue" /> },
   { id: 'crossword', d: { x: 77, y: 56, w: 17, r: 4 }, m: { x: 60, y: 76, w: 36, r: 6 }, el: <Crossword /> },
 ];
 
@@ -65,6 +68,7 @@ export default function Home() {
       </section>
 
       <section className="intro">
+        <Cat pose="peek" eyes="green" className="intro__cat" />
         <p className="intro__kicker">hello, hi, namaste —</p>
         <p className="intro__line">
           I'm <em>{site.name}</em>, a {site.role} from {site.location}. {site.tagline}
@@ -89,7 +93,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link to={`/work/${p.slug}`} className="spread__photo" aria-label={`Read about ${p.title}`}>
-              <Polaroid src={p.shots[0].src} alt={p.shots[0].alt} caption={p.sticker} tilt={i % 2 ? 3 : -3} tape={(['pink', 'mint', 'yellow'] as const)[i]} />
+              <Polaroid src={p.shots[0].src} alt={p.shots[0].alt} caption={p.sticker} tilt={i % 2 ? 3 : -3} tape={(['kraft', 'blue', 'yellow'] as const)[i]} />
             </Link>
             <div className="spread__text">
               <p className="spread__num">0{i + 1} · {p.kind} · {p.year}</p>
