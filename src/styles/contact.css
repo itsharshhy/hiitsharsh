@@ -440,3 +440,23 @@ a:hover .logo {
     padding: 32px 22px 36px;
   }
 }
+
+.letter__honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.letter__send:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+.letter__error {
+  margin: 0;
+  font: 1.15rem var(--hand);
+  color: #8a3b2c;
+}
+.letter__error a {
+  color: inherit;
+}

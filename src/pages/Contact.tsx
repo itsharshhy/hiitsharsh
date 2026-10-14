@@ -51,25 +51,46 @@ export default function Contact() {
   const [msg, setMsg] = useState('');
   const [topic, setTopic] = useState(topics[0]);
   const [sent, setSent] = useState(false);
+  const [from, setFrom] = useState('');
+  const [honey, setHoney] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle');
   const [copied, setCopied] = useState(false);
   const links = socials().filter((s) => logoFor[s.label]);
   const byLabel = Object.fromEntries(links.map((s) => [s.label, s]));
 
   // The letter fades away; once it's gone the visitor's own email app opens with it written in.
-  const send = (e: FormEvent) => {
+  // Letters go through FormSubmit (formsubmit.co), which emails them straight to site.email.
+  // No server of our own and no email app needed on the visitor's side.
+  const send = async (e: FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    if (site.email) {
-      const subject = encodeURIComponent(`Hello from ${name || 'a visitor'} (re: ${topic})`);
-      const body = encodeURIComponent(`${msg}\n\n— ${name}`);
-      setTimeout(() => {
-        window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-      }, 900);
+    if (status === 'sending') return;
+    setStatus('sending');
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name,
+          email: from,
+          topic,
+          message: msg,
+          _subject: `New letter from ${name || 'a visitor'} (re: ${topic})`,
+          _template: 'box',
+          _honey: honey,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'not sent');
+      setSent(true);
+      setStatus('idle');
+    } catch {
+      setStatus('error');
     }
   };
 
   const again = () => {
     setMsg('');
+    setStatus('idle');
     setSent(false);
   };
 
@@ -172,10 +193,22 @@ export default function Contact() {
                   <span>yours,</span>
                   <input value={name} onChange={(e) => setName(e.target.value)} placeholder="your name" required autoComplete="name" />
                 </label>
+                <label className="letter__field letter__field--sign">
+                  <span>so I can write back:</span>
+                  <input type="email" value={from} onChange={(e) => setFrom(e.target.value)} placeholder="you@email.com" required autoComplete="email" />
+                </label>
+                {/* a hidden field only bots fill in */}
+                <input className="letter__honey" type="text" name="_honey" tabIndex={-1} autoComplete="off" value={honey} onChange={(e) => setHoney(e.target.value)} aria-hidden="true" />
 
-                <button className="pill letter__send" type="submit">
-                  seal &amp; send <span aria-hidden="true">✉</span>
+                <button className="pill letter__send" type="submit" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'sending…' : <>seal &amp; send <span aria-hidden="true">✉</span></>}
                 </button>
+                {status === 'error' && (
+                  <p className="letter__error" role="alert">
+                    Hmm, the post office didn't pick that up. Please try again, or write to me directly at{' '}
+                    <a href={`mailto:${site.email}`}>{site.email}</a>.
+                  </p>
+                )}
               </motion.form>
             ) : (
               <motion.div
@@ -188,8 +221,7 @@ export default function Contact() {
               >
                 <span className="done__mark" aria-hidden="true">✓</span>
                 <h2>It's done.</h2>
-                <p>Thank you for writing. Replies might take a few days, so hang tight. I'll get back to you.</p>
-                <p className="done__hint">(Your email app just opened with your letter inside. Press send there and it's on its way.)</p>
+                <p>Your letter has landed in my inbox. Thank you for writing. Replies might take a few days, so hang tight. I'll get back to you.</p>
                 <button className="pill pill--ghost" onClick={again}>write another ✎</button>
               </motion.div>
             )}
