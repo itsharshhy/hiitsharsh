@@ -97,7 +97,10 @@ export default function Contact() {
     setStatus('sending');
     try {
       const subject = `New letter from ${name || 'a visitor'} (re: ${topic})`;
-      const ok = site.formKey ? await viaWeb3Forms(subject) : await viaFormSubmit(subject);
+      // Web3Forms first; if it can't be reached, try FormSubmit before giving up.
+      let ok = false;
+      if (site.formKey) ok = await viaWeb3Forms(subject).catch(() => false);
+      if (!ok) ok = await viaFormSubmit(subject).catch(() => false);
       if (!ok) throw new Error('not sent');
       setSent(true);
       setStatus('idle');
