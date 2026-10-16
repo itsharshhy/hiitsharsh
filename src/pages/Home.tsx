@@ -78,7 +78,7 @@ export default function Home() {
       <section id="work" className="work-list" aria-labelledby="work-title">
         <header className="work-list__head">
           <h2 id="work-title">The Work</h2>
-          <p className="scribble">four things I made & love ↓</p>
+          <p className="scribble">five things I made & love ↓</p>
           <Link to="/work" className="work-list__all">see them all on the projects page →</Link>
         </header>
 

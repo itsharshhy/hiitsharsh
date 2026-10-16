@@ -13,6 +13,7 @@ const heroSpots = [
   { left: '44%', top: '74%', rot: 4, w: 'clamp(130px, 15%, 210px)' },
   { left: '80%', top: '2%', rot: -4, w: 'clamp(130px, 15%, 210px)' },
   { left: '66%', top: '64%', rot: 6, w: 'clamp(130px, 15%, 210px)' },
+  { left: '25%', top: '-4%', rot: 5, w: 'clamp(120px, 13%, 190px)' },
 ];
 
 export default function Projects() {
@@ -62,7 +63,7 @@ export default function Projects() {
         </div>
 
         <div className="bubble pj-hero__bubble">
-          <p>A field guide, a game, a desktop app and a website. Small, calm, made with care, and all of them shipped.</p>
+          <p>A pixel game, a field guide, a cozy game, a desktop app and a website. Small, calm, made with care, and all of them shipped.</p>
           <svg viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true">
             <motion.path
               d="M60 16 C 170 -2, 362 6, 390 56 C 410 104, 300 136, 190 132 C 70 128, 2 108, 10 64 C 18 26, 110 8, 240 12"

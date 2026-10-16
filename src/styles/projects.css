@@ -98,7 +98,7 @@
   }
   .pj-hero__stage {
     min-height: 0;
-    padding: 20px 0 410px;
+    padding: 20px 0 600px;
   }
   .pj-hero__line {
     font-size: clamp(2.6rem, 14vw, 5rem);
@@ -108,14 +108,15 @@
     padding-left: 0;
   }
   .pj-cut { width: 40% !important; }
-  .pj-cut--0 { left: 2% !important; top: auto !important; bottom: 190px; }
-  .pj-cut--1 { left: 56% !important; top: auto !important; bottom: 220px; }
-  .pj-cut--2 { left: 4% !important; top: auto !important; bottom: 10px; }
-  .pj-cut--3 { left: 54% !important; top: auto !important; bottom: 40px; }
+  .pj-cut--0 { left: 2% !important; top: auto !important; bottom: 380px; }
+  .pj-cut--1 { left: 56% !important; top: auto !important; bottom: 410px; }
+  .pj-cut--2 { left: 4% !important; top: auto !important; bottom: 200px; }
+  .pj-cut--3 { left: 54% !important; top: auto !important; bottom: 225px; }
+  .pj-cut--4 { left: 30% !important; top: auto !important; bottom: 20px; }
   .pj-hero__flower { left: auto; right: 4%; top: 2%; width: 56px; }
   .pj-hero__scrap1 { left: 46%; top: 4%; width: 34%; height: 6%; }
   .pj-hero__scrap2 { display: none; }
-  .pj-hero__n1 { left: 4%; top: auto; bottom: 380px; }
+  .pj-hero__n1 { left: 4%; top: auto; bottom: 570px; }
   .pj-hero__n2 { display: none; }
   .pj-hero__n3 { display: none; }
   .pj-hero__cat { left: auto; right: 22%; top: -40px; }
