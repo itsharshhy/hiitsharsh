@@ -12,6 +12,7 @@ const heroSpots = [
   { left: '4%', top: '-8%', rot: -7, w: 'clamp(130px, 15%, 210px)' },
   { left: '44%', top: '74%', rot: 4, w: 'clamp(130px, 15%, 210px)' },
   { left: '80%', top: '2%', rot: -4, w: 'clamp(130px, 15%, 210px)' },
+  { left: '66%', top: '64%', rot: 6, w: 'clamp(130px, 15%, 210px)' },
 ];
 
 export default function Projects() {
@@ -27,7 +28,7 @@ export default function Projects() {
           <span className="scrap scrap--red pj-hero__scrap2" aria-hidden="true" />
 
           {projects.map((p, i) => {
-            const s = heroSpots[i];
+            const s = heroSpots[i % heroSpots.length];
             return (
               <motion.div
                 key={p.slug}
@@ -53,7 +54,7 @@ export default function Projects() {
           })}
 
           <InkFlower className="pj-hero__flower" />
-          <Note tone="lemon" tilt={-2} className="pj-hero__n1 note--tape" delay={1.1}>3 OF THEM, FOR NOW</Note>
+          <Note tone="lemon" tilt={-2} className="pj-hero__n1 note--tape" delay={1.1}>{projects.length} OF THEM, FOR NOW</Note>
           <Note tone="paper" tilt={4} className="pj-hero__n2" delay={1.3}>each one started<br />as a note in a notebook</Note>
           <Note tone="lilac" tilt={-5} className="pj-hero__n3" delay={1.5}>tap one ↓</Note>
           <Cat pose="sit" className="pj-hero__cat" />
@@ -61,7 +62,7 @@ export default function Projects() {
         </div>
 
         <div className="bubble pj-hero__bubble">
-          <p>A game, a desktop app and a website. Small, calm, made with care, and all of them shipped.</p>
+          <p>A field guide, a game, a desktop app and a website. Small, calm, made with care, and all of them shipped.</p>
           <svg viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true">
             <motion.path
               d="M60 16 C 170 -2, 362 6, 390 56 C 410 104, 300 136, 190 132 C 70 128, 2 108, 10 64 C 18 26, 110 8, 240 12"
@@ -81,7 +82,7 @@ export default function Projects() {
       {/* ---------- one section per project ---------- */}
       {projects.map((p, i) => (
         <section key={p.slug} id={p.slug} className={`pj ${i % 2 ? 'pj--flip pj--pink on-dark' : ''}`}>
-          <Torn color={i % 2 ? 'var(--olive)' : 'var(--cream-2)'} under={['var(--olive-deep)', 'var(--olive-soft)', 'var(--olive-deep)'][i]} seed={11 + i * 9} className="torn--top" />
+          <Torn color={i % 2 ? 'var(--olive)' : 'var(--cream-2)'} under={i % 2 ? 'var(--olive-soft)' : 'var(--olive-deep)'} seed={11 + i * 9} className="torn--top" />
           <div className="pj__inner">
             <div className="pj__text">
               <p className="pj__num">0{i + 1}</p>
@@ -113,7 +114,7 @@ export default function Projects() {
 
             <div className="pj__collage">
               <motion.span
-                className={`pj__scrap pj__scrap--${i}`}
+                className={`pj__scrap pj__scrap--${i % 4}`}
                 aria-hidden="true"
                 initial={{ scale: 0.6, rotate: -20, opacity: 0 }}
                 whileInView={{ scale: 1, rotate: i % 2 ? 6 : -6, opacity: 1 }}

@@ -8,11 +8,11 @@ My portfolio, made to feel like a scrapbook on a desk: drag the stickers around,
 
 | Page | What it does |
 |---|---|
-| `/` | An olive desk covered in draggable scrapbook objects (beads that spell my name, an envelope, a camera, a record, tickets, a pebble dish…). Some of them are doors: the envelope opens Contact, the camera opens About, and the record, tickets and pebble dish open each project. Below: the three projects as taped-down polaroids. |
+| `/` | An olive desk covered in draggable scrapbook objects (beads that spell my name, an envelope, a camera, a record, tickets, a pebble dish…). Some of them are doors: the envelope opens Contact, the camera opens About, and the record, tickets and pebble dish open each project. Below: the four projects as taped-down polaroids. |
 | `/work/:slug` | A case study per project: the gist, why it exists, how it's made, how it looks (palette + type), what's inside, what I learned. Each page takes on that project's own colours. |
-| `/work` | All three projects as a paper collage: cut-out lettering, taped screenshots, margin notes, cats. |
+| `/work` | All four projects as a paper collage: cut-out lettering, taped screenshots, margin notes, cats. |
 | `/about` | "HI, I'M HARSH." in cut-out letters next to pixel-art me (blinks, glints, says hi), the longer story with the portrait sliced into paper strips, what I'm up to and a toolbox. |
-| `/contact` | A big portrait of pixel-art me with minimal hand-drawn icon links and a pen tag that writes conversation starters, then a letter form that emails me directly (via FormSubmit), fades away when sent, and confirms with "It's done". |
+| `/contact` | A big portrait of pixel-art me with minimal hand-drawn icon links and a pen tag that writes conversation starters, then a letter form that emails me directly (via Web3Forms), fades away when sent, and confirms with "It's done". |
 
 ## How it's built
 

@@ -41,7 +41,7 @@ jobs:
       # (like /about) load with a normal 200, and keep 404.html as a fallback for anything else.
       - run: |
           cp dist/index.html dist/404.html
-          for r in about contact work work/plant-a-thought work/pebble work/seven-wonders-studio; do
+          for r in about contact work work/design-roadmap work/plant-a-thought work/pebble work/seven-wonders-studio; do
             mkdir -p "dist/$r" && cp dist/index.html "dist/$r/index.html"
           done
       - uses: actions/configure-pages@v5

@@ -78,7 +78,7 @@ export default function Home() {
       <section id="work" className="work-list" aria-labelledby="work-title">
         <header className="work-list__head">
           <h2 id="work-title">The Work</h2>
-          <p className="scribble">three things I made & love ↓</p>
+          <p className="scribble">four things I made & love ↓</p>
           <Link to="/work" className="work-list__all">see them all on the projects page →</Link>
         </header>
 
@@ -93,7 +93,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link to={`/work/${p.slug}`} className="spread__photo" aria-label={`Read about ${p.title}`}>
-              <Polaroid src={p.shots[0].src} alt={p.shots[0].alt} caption={p.sticker} tilt={i % 2 ? 3 : -3} tape={(['kraft', 'blue', 'yellow'] as const)[i]} />
+              <Polaroid src={p.shots[0].src} alt={p.shots[0].alt} caption={p.sticker} tilt={i % 2 ? 3 : -3} tape={(['kraft', 'blue', 'yellow'] as const)[i % 3]} />
             </Link>
             <div className="spread__text">
               <p className="spread__num">0{i + 1} · {p.kind} · {p.year}</p>

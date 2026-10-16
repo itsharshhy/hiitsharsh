@@ -5,7 +5,7 @@ Hosted free on GitHub Pages at **https://itsharshhy.github.io/hiitsharsh/** (rep
 ## Three things to know
 
 1. **Every change goes through GitHub.** A push to `itsharshhy/hiitsharsh` builds and publishes the site in about a minute.
-2. **The contact form emails you directly.** Letters go through FormSubmit to hiharshhyadav@gmail.com. It needs a one-time activation click.
+2. **The contact form emails you directly.** Letters go through Web3Forms (FormSubmit as backup) to hiharshhyadav@gmail.com.
 3. **Your content lives in `src/content/`.** Details, projects and the about story are plain text.
 
 ## Your address
@@ -57,7 +57,7 @@ New project: copy a block in `projects.ts`, give it a new `slug`, and add `work/
 
 ## How it's built
 
-React 19 + TypeScript, Vite, React Router, Framer Motion, inline SVG illustrations, Fontsource fonts (Kumbh Sans, Instrument Serif, Instrument Sans, Patrick Hand, DM Mono), FormSubmit for email, GitHub Actions + Pages for hosting.
+React 19 + TypeScript, Vite, React Router, Framer Motion, inline SVG illustrations, Fontsource fonts (Kumbh Sans, Instrument Serif, Instrument Sans, Patrick Hand, DM Mono), Web3Forms + FormSubmit for email, GitHub Actions + Pages for hosting.
 
 ```
 public/            harsh.webp, work/ screenshots, favicon.svg (+ CNAME if you add a domain)
@@ -76,15 +76,15 @@ Run locally: Node.js 22, then `npm install` and `npm run dev`.
 | --- | --- |
 | Change not showing | Check Actions; hard-refresh (Ctrl/Cmd + Shift + R) |
 | Actions run is red | Open the run and read the failed step; old site stays up |
-| Contact says "the post office didn't pick that up" | Click the FormSubmit activation email; retry later |
+| Contact says "the post office didn't pick that up" | Check `formKey` in `src/content/site.ts`; retry later |
 | No letters arriving | Check Spam/Promotions; mark "Not spam" |
 | Address shows 404 or a blank page after a rename | Not rebuilt yet — Actions → Run workflow |
 | Page loads unstyled | Built for the old address — run the deploy again |
 
 ## Launch checklist
 
-- [ ] Activate the contact form (FormSubmit email)
+- [x] Contact form on Web3Forms
 - [x] Rename the repo (`hiitsharsh`) and rebuild
-- [ ] Send a test letter from https://itsharshhy.github.io/hiitsharsh/contact
+- [x] Send a test letter from https://itsharshhy.github.io/hiitsharsh/contact
 - [ ] Check every page on phone and laptop
 - [ ] Put https://itsharshhy.github.io/hiitsharsh/ in your Instagram and GitHub bios
